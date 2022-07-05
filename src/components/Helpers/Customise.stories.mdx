@@ -1,0 +1,191 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Button, Typography } from '@components';
+import { mainColors, colorPalette } from '@primitives';
+import { hexToRGBA } from '@utils';
+import { FontWeights, FontType } from '@types';
+
+<Meta title="Foundation/Customisation" />
+
+export const colorConfig = {
+    backgroundColor: mainColors.black,
+    color: mainColors.white,
+    borderColor: '#E5FE40',
+    edgeColors: { right: '#A2B42D', bottom: '#67721F', top: 'transparent', left: 'transparent' },
+    disabledColors: {
+        backgroundColor: colorPalette.black[50],
+        color: hexToRGBA(mainColors.white, 0.5),
+        edgeColors: {
+            top: 'transparent',
+            left: 'transparent',
+            right: colorPalette.white[70],
+            bottom: colorPalette.white[50],
+        },
+    },
+};
+export const CustomiseButton = (args) => {
+    return (
+        <Button
+            size="big"
+            colorMode="dark"
+            variant="secondary"
+            kind="elevated"
+            colorConfig={colorConfig}
+            {...args}
+        >
+            Scan QR
+        </Button>
+    );
+};
+
+# How to Customise
+
+All neoPOP components use default neoPOP styles based on props passed to the components.
+The styles like color and typography is decided based on the `colors` and `typography` mentioned in Foundation respectively.
+To customise the component even further with your own theme, we provide 2 ways
+
+1. Extend color primitives
+2. Custom props
+3. Inline styles
+
+## Extending color primitives
+- All the components by default read the colors in `@cred/neopop-web/lib/primitives/colors` defined for the respective component
+- It's possible to override some/all the colors defined in `@cred/neopop-web/lib/primitives/colors`
+- `@cred/neopop-web/lib/primitives/colors` contains three configs, namely
+    - `mainColors`: this defines primary colors used overall
+    - `colorPalette`: this defines the neoPOP color palette (ideally you would not want to modify this)
+    - `colorGuide`: this defines the colors for each component. Every component have it's own structure to define their color guide, refer [here](https://github.com/CRED-CLUB/neopop-web/blob/src/primitives/colors.ts) for default color guide
+- To override the color primitives you can use the `extend` method
+
+**make sure to call `extend` method in your `index` file before mounting the react node**
+
+```jsx
+import { extend } from '@cred/neopop-web/lib/primitives';
+
+extend({
+    mainColors: {
+        black: '#000'
+    },
+    colorGuide: {
+        lightComponents: {
+            buttons: {
+                primary: {
+                    backgroundColor: mainColors.black
+                }
+            }
+        }
+    }
+})
+```
+
+## Passing `colorConfig` to the component for colors
+
+-   All component have a `colorConfig` object which takes in a object based on the configuration of that component
+-   Check documentation for the object signature of each component
+-   This config will override the default neoPOP style
+
+Let's see how to customize the Button component
+
+```jsx
+import React from 'react';
+import { Button } from '@cred/neopop-web/lib/components';
+import { colorPalette, mainColors } from '@cred/neopop-web/lib/primitives';
+import { hexToRGBA } from '@utils';
+
+const colorConfig = {
+    backgroundColor: mainColors.black,
+    color: mainColors.white,
+    borderColor: '#E5FE40',
+    edgeColors: { right: '#A2B42D', bottom: '#67721F', top: 'transparent', left: 'transparent' },
+    disabledColors: {
+        backgroundColor: colorPalette.black[50],
+        color: hexToRGBA(mainColors.white, 0.5),
+        edgeColors: {
+            top: 'transparent',
+            left: 'transparent',
+            right: colorPalette.white[70],
+            bottom: colorPalette.white[50],
+        },
+    },
+};
+
+const MyCustomButton = (args) => {
+    return (
+        <Button
+            size="big"
+            colorMode="dark"
+            variant="secondary"
+            kind="elevated"
+            colorConfig={colorConfig}
+            {...args}
+        >
+            Scan QR
+        </Button>
+    );
+};
+
+export default MyCustomButton;
+```
+
+<Canvas style={{ background: '#0d0d0d' }}>
+    <Story name="Custom ColorConfig Button">{CustomiseButton.bind()}</Story>
+</Canvas>
+
+## Passing `textStyle` to the component
+
+-   Component that involves typography will have a prop called `textStyle` which accepts the `FontNameSpace` type object.
+-   You can pass `FontWeight`, `FontSize`, and `FontType` to this object.
+
+Let's customize the textStyle for the custom button:
+
+```jsx
+...
+import { FontWeights, FontType } from '@types';
+
+const MyCustomButton = () => {
+    return (
+        <Button
+            size="big"
+            colorMode="dark"
+            variant="secondary"
+            kind="elevated"
+            colorConfig={colorConfig}
+            textStyle={
+                fontType: FontType.HEADING,
+                fontSize: 24,
+                fontWeight: FontWeights.EXTRA_BOLD,
+            }
+        >
+            Scan QR
+        </Button>
+    );
+};
+
+...
+```
+
+<Canvas style={{ background: '#0d0d0d' }}>
+    <Story
+        name="Custom TextStyle Button"
+        args={{
+            textStyle: {
+                fontType: FontType.HEADING,
+                fontSize: 24,
+                fontWeight: FontWeights.EXTRA_BOLD,
+            },
+        }}
+    >
+        {CustomiseButton.bind()}
+    </Story>
+</Canvas>
+
+## Passing inline styles to the component
+
+-   Some components support inline CSS style tag which gets applied to the top level element of the wrapper.
+
+```jsx
+<Typography style={{'textAlign': 'center'}}>my inline styled typography component</Typography>
+```
+
+<Canvas style={{ background: '#0d0d0d' }}>
+    <Typography style={{'textAlign': 'center'}}>my inline styled typography component</Typography>
+</Canvas>

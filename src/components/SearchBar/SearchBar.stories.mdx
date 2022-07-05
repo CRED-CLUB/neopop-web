@@ -1,0 +1,163 @@
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
+import { colorGuide, mainColors, colorPalette } from '@primitives';
+import { SearchBar } from '@components';
+
+<Meta title="Components/SearchBar" component={SearchBar} />
+
+# SearchBar
+
+SearchBar component allows to render a flexible search input field with change and submit event support.
+
+export const BasicSearch = (args) => {
+    return <SearchBar {...args} />;
+};
+
+## Usage
+
+### 1. Search with icon
+
+<Canvas>
+    <Story
+        name="Search with icon"
+        args={{
+            iconUrl: 'https://cdn-icons-png.flaticon.com/512/482/482631.png',
+            placeholder: 'search query here',
+            colorConfig: colorGuide.lightComponents.searchBar,
+            inputColorConfig: colorGuide.lightComponents.inputFields,
+            handleSearchInput: (value) => {
+                console.log('Search query: ', value);
+            },
+            onSubmit: (value) => {
+                console.log('Search query submitted');
+            },
+        }}
+    >
+        {BasicSearch.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { SearchBar } from '@cred/neopop-web/lib/components';
+import { colorGuide } from '@cred/neopop-web/lib/primitives';
+
+const SearchInputField = () => {
+    const handleChange = (value) => {
+        console.log('Search query: ', value);
+    };
+    const handleSubmit = () => {
+        console.log('Search query submitted');
+    };
+
+    return (
+        <SearchBar
+            iconUrl="https://cdn-icons-png.flaticon.com/512/482/482631.png"
+            placeholder="search query here"
+            colorConfig={colorGuide.lightComponents.searchBar}
+            inputColorConfig={colorGuide.lightComponents.inputFields}
+            handleSearchInput={handleChange}
+            onSubmit={handleSubmit}
+        />
+    );
+};
+
+export default SearchInputField;
+```
+
+### 2. Search without icon
+
+<Canvas>
+    <Story
+        name="Search without icon"
+        args={{
+            placeholder: 'search query here',
+            colorConfig: colorGuide.lightComponents.searchBar,
+            inputColorConfig: colorGuide.lightComponents.inputFields,
+            handleSearchInput: (value) => {
+                console.log('Search query: ', value);
+            },
+            onSubmit: (value) => {
+                console.log('Search query submitted');
+            },
+        }}
+    >
+        {BasicSearch.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { SearchBar } from '@cred/neopop-web/lib/components';
+import { colorGuide } from '@cred/neopop-web/lib/primitives';
+
+const SearchInputField = () => {
+    const handleChange = (value) => {
+        console.log('Search query: ', value);
+    };
+    const handleSubmit = () => {
+        console.log('Search query submitted');
+    };
+
+    return (
+        <SearchBar
+            placeholder="search query here"
+            colorConfig={colorGuide.lightComponents.searchBar}
+            inputColorConfig={colorGuide.lightComponents.inputFields}
+            handleSearchInput={handleChange}
+            onSubmit={handleSubmit}
+        />
+    );
+};
+
+export default SearchInputField;
+```
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop                   | description                                     | type                              |
+| ---------------------- | ----------------------------------------------- | --------------------------------- |
+| `iconUrl`              | url of icon inside input field                  | `string`                          |
+| `placeholder`          | input field placeholder                         | `string`                          |
+| `colorConfig`          | search container color config                   | `object`                          |
+| `inputColorConfig`     | input field color config                        | `object`                          |
+| `colorMode`            | dark or light                                   | `string`                          |
+| `textStyle`            | font styles to be used for the input text field | `object - FontNameSpaceInterface` |
+| `handleSearchInput*`   | onChange event handler                          | `function`                        |
+| `onSubmit`             | onSubmit event handler                          | `function`                        |
+
+</div>
+
+**colorConfig** prop object support four color configurations for content namely `border`, `activeBorder`, `backgroundColor`, & `closeIcon`.
+
+**inputColorConfig** prop object support five color configurations for content namely `textColor`, `labelColor`, `caretColor`,`errorColor`, & `placeholderColor`.
+
+**textStyle**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop            | description        | type                                       |
+| --------------- | ------------------ | ------------------------------------------ |
+| `fontType*`     | typography variant | `heading`, `caps`, `body`, `serif-heading` |
+| `fontWeight*`   | weight of the text | `800`, `700`, `600`, `500`, `400`, `300`   |
+| `fontSize*`     | size of the text   | `string`                                   |
+
+</div>
+
+```js
+const colorConfig = {
+    border: mainColors.black,
+    activeBorder: mainColors.green,
+    backgroundColor: mainColors.white,
+    closeIcon: colorPalette.popBlack[100],
+};
+
+const inputColorConfig = {
+    textColor: mainColors.black,
+    labelColor: mainColors.blue,
+    caretColor: mainColors.black,
+    errorColor: mainColors.red,
+    placeholderColor: colorPalette.popBlack[100],
+};
+```

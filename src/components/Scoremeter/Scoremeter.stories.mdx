@@ -1,0 +1,188 @@
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs';
+import { getScoreMeterConfig } from '../../primitives';
+import ScoreMeter from '.';
+
+<Meta title="Components/ScoreMeter" component={ScoreMeter} />
+
+export const DarkScoreMeterTemplate = (args) => (
+    <div
+        style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '50px',
+        }}
+    >
+        <ScoreMeter {...args} />
+    </div>
+);
+
+export const LightScoreMeterTemplate = (args) => (
+    <div
+        style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: '#fff',
+            padding: '50px',
+        }}
+    >
+        <ScoreMeter {...args} />
+    </div>
+);
+
+export const ScoreMeterArgs = {
+    reading: {
+        description: 'Current value of meter',
+    },
+    meterConfig: {
+        description:
+            'All configs related to meter. meterColor: bar fill color, meterWrapper: outside meter wrapper bg, border: meter border, dotColor: dot color',
+    },
+    scoreConfig: {
+        description:
+            'All configs related to score. scoreDesc: description inside meter, scoreWrapper: space between bar with meterColor and scoreContainer, scoreContainer: score container background, scoreColor: score text color, showIndicators: indicators for score inc/dec.',
+    },
+    oldReading: {
+        description: 'Old reading (pass when score change animation required)',
+        control: {
+            type: 'number',
+        },
+    },
+    lowerLimit: {
+        description: 'Minimum possible reading of meter',
+        defaultValue: 300,
+        control: {
+            type: 'number',
+        },
+    },
+    upperLimit: {
+        description: 'Maximum possible reading of meter',
+        defaultValue: 900,
+        control: {
+            type: 'number',
+        },
+    },
+};
+
+# ScoreMeter
+
+ScoreMeter component can be used as a visual representation of any measurable and quantifiable value with a defined lower and upper limit.
+
+## Usage
+
+-   Pass the required Props
+-   Use `colorMode` prop to change the color mode - `"dark"` or `"light"`
+-   Use `type` prop to change the colors based on rating `"excellent"`, `"average"`, or `"poor"`
+-   `colorConfig` will override the default config (calculated based on `colorMode` and `type`)
+
+```jsx
+import { ScoreMeter } from '@cred/neopop-web/lib/components';
+
+const ScoreMeterExample = () => {
+    return (
+        <ScoreMeter
+            reading={720}
+            oldReading={500}
+            lowerLimit={100}
+            upperLimit={1000}
+            colorMode="light"
+            type="excellent"
+        />
+    );
+};
+
+export default ScoreMeterExample;
+```
+
+## Variants
+
+<br />
+
+<Canvas>
+    <Story
+        name="ScoreMeterDark"
+        args={{ ...getScoreMeterConfig.darkScoreMeter(770, 'crif') }}
+        argTypes={ScoreMeterArgs}
+    >
+        {DarkScoreMeterTemplate.bind({})}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story
+        name="ScoreMeterLight"
+        args={{ ...getScoreMeterConfig.lightScoreMeter(780, 'crif', 620) }}
+        argTypes={ScoreMeterArgs}
+    >
+        {LightScoreMeterTemplate.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+
+| name             | description                                                                                                                          | type    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| `reading*`       | Current value of meter                                                                                                               | number  |
+| `oldReading`     | Old reading (to be given when animation to new reading required)                                                                     | number  |
+| `lowerLimit`     | Min reading of meter (default 300)                                                                                                   | number  |
+| `upperLimit`     | Max reading of meter (default 900)                                                                                                   | number  |
+| `colorMode`      | Color mode of the score meter - `"dark"` or `"light"`                                                                                | string  |
+| `type`           | Rating Type of the score meter - `"excellent"`, `"average"`, or `"poor"`                                                             | string  |
+| `scoreDesc`      | Text to be shown below the score                                                                                                     | string  |
+| `showIndicators` | Show indicators up or down (used in case of animation) <br/> use `indicatorColors` in `colorConfig` to set the colors for indicators | boolean |
+| `colorConfig`    | All configs related to color of the scoremeter                                                                                       | object  |
+| `showLegends`    | Use to show lower limit and upper limit text                                                                                         | boolean |
+
+
+</div>
+
+**colorConfig**
+
+<div style={{overflowX: 'auto'}}>
+
+
+| name                       | description                                                                  | type   |
+| -------------------------- | ---------------------------------------------------------------------------- | ------ |
+| `meterStrokeColor*`        | Object defining color of the meter                                           | object |
+| `meterStrokeBackground`    | Background of the meter color                                                | string |
+| `meterBorderColor`         | Outer border of the meter                                                    | string |
+| `dotColor`                 | Color for the dot on the meter                                               | string |
+| `indicatorColors`          | Color of the indicators used inside the meter                                | object |
+| `scoreContainerBackground` | Score background color                                                       | string |
+| `scoreContainerBorder`     | Color of the border of the container (gap between meter and score container) | string |
+| `scoreColor`               | Color of the score                                                           | string |
+
+
+</div>
+
+**meterStrokeColor**
+
+<div style={{overflowX: 'auto'}}>
+
+
+| name         | description                        | type   |
+| ------------ | ---------------------------------- | ------ |
+| `excellent*` | Color when the rating is excellent | string |
+| `average*`   | Color when the rating is average   | string |
+| `poor*`     | Color when the rating is poor      | string |
+
+
+</div>
+
+**indicatorColors**
+
+<div style={{overflowX: 'auto'}}>
+
+
+| name         | description                                                      | type   |
+| ------------ | ---------------------------------------------------------------- | ------ |
+| `neutral*`   | Color used when there is no change in `oldReading` and `reading` | string |
+| `increment*` | Color used when `oldReading < reading`                           | string |
+| `decrement*` | Color used when `oldReading > reading`                           | string |
+
+
+</div>

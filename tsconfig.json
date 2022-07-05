@@ -1,0 +1,37 @@
+{
+    "include": ["src/**/*", "declaration.d.ts"],
+
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "allowJs": true,
+        "checkJs": false,
+        "jsx": "preserve",
+        "strict": true,
+        "moduleResolution": "node",
+        "rootDirs": ["src", "intro"],
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "isolatedModules": true,
+        "declarationDir": "lib",
+        "outDir": "lib",
+        "declarationMap": true,
+        "baseUrl": "./",
+        "paths": {
+            "@components": ["./src/components/index"],
+            "@components/*": ["./src/components/*"],
+            "@hooks": ["./src/hooks/index"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@primitives": ["./src/primitives/index"],
+            "@primitives/*": ["./src/primitives/*"],
+            "@types": ["./src/types/index"],
+            "@types/*": ["./src/types/*"],
+            "@utils": ["./src/utils/index"],
+            "@utils/*": ["./src/utils/*"]
+        }
+    }
+}

@@ -1,0 +1,4 @@
+{
+  "presets": ["@babel/preset-typescript", "@babel/preset-react", "@babel/preset-env"],
+  "plugins": ["macros", "preval", "babel-plugin-styled-components", "@babel/plugin-proposal-nullish-coalescing-operator", "@babel/plugin-proposal-optional-chaining"]
+}

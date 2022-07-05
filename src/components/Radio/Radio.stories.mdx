@@ -1,0 +1,196 @@
+import { useState } from 'react';
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
+import { colorGuide } from '@primitives';
+import { HorizontalSpacer, Row, Radio } from '@components';
+
+<Meta
+    title="Components/Radio"
+    component={Radio}
+    argTypes={{
+        id: {
+            control: { type: 'text' },
+        },
+        name: {
+            control: { type: 'text' },
+        },
+        value: {
+            control: { type: 'text' },
+        },
+        label: {
+            control: { type: 'text' },
+        },
+        isChecked: {
+            control: { type: 'boolean' },
+        },
+        onChange: {
+            control: { type: 'function' },
+        },
+    }}
+/>
+
+# Radio
+
+Radio component allow users to select single option from a list of options.
+
+export const GenderRadio = () => {
+    const [selectedVal, setSelectedVal] = useState('');
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        setSelectedVal(e.target.value);
+    };
+    return (
+        <>
+            <Radio
+                id="male"
+                name="gender"
+                value="male"
+                label="Male"
+                isChecked={selectedVal === 'male'}
+                colorConfig={colorGuide.darkComponents.radio}
+                onChange={handleChange}
+            />
+            <HorizontalSpacer n={2} />
+            <Radio
+                id="female"
+                name="gender"
+                value="female"
+                label="Female"
+                isChecked={selectedVal === 'female'}
+                colorConfig={colorGuide.darkComponents.radio}
+                onChange={handleChange}
+            />
+        </>
+    );
+};
+
+## Usage
+
+<Canvas>
+    <Story name="Basic Radio" args={{}}>
+        {GenderRadio.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Radio, HorizontalSpacer } from '@cred/neopop-web/lib/components';
+import { colorGuide } from '@cred/neopop-web/lib/primitives';
+
+const GenderRadio = () => {
+    const [selectedVal, setSelectedVal] = useState('');
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        setSelectedVal(e.target.value);
+    };
+
+    return (
+        <>
+            <Radio
+                id="male"
+                name="gender"
+                value="male"
+                label="Male"
+                isChecked={selectedVal === 'male'}
+                colorConfig={colorGuide.darkComponents.radio}
+                onChange={handleChange}
+            />
+            <HorizontalSpacer n={2} />
+            <Radio
+                id="female"
+                name="gender"
+                value="female"
+                label="Female"
+                isChecked={selectedVal === 'female'}
+                colorConfig={colorGuide.darkComponents.radio}
+                onChange={handleChange}
+            />
+        </>
+    );
+};
+
+export default GenderRadio;
+```
+
+## Variants
+
+Radio component has two states namely selected and unselected.
+
+export const RadioTemplate = (args) => {
+    return <Radio {...args} />;
+};
+
+#### Selected
+
+<Canvas>
+    <Story
+        name="Selected Radio"
+        args={{
+            name: 'state',
+            value: 'selected',
+            label: 'Selected',
+            isChecked: true,
+            colorConfig: colorGuide.darkComponents.radio,
+            onChange: (e) => {
+                console.log(e.target.checked);
+            },
+        }}
+    >
+        {RadioTemplate.bind({})}
+    </Story>
+</Canvas>
+
+#### Unselected
+
+<Canvas>
+    <Story
+        name="Unselected Radio"
+        args={{
+            name: 'state',
+            value: 'unselected',
+            label: 'Unselected',
+            isChecked: false,
+            colorConfig: colorGuide.darkComponents.radio,
+            onChange: (e) => {
+                console.log(e.target.checked);
+            },
+        }}
+    >
+        {RadioTemplate.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop           | description                       | type       |
+| -------------- | --------------------------------- | ---------- |
+| `id`           | id of the radio element           | `string`   |
+| `name*`        | name of the radio element         | `string`   |
+| `value*`       | value of the radio element        | `string`   |
+| `label*`       | label of the radio element        | `string`   |
+| `isChecked*`   | if true, radio is checked         | `boolean`  |
+| `colorConfig`  | color-config of the radio element | `object`   |
+| `colorMode`    | dark or light                     | `string`   |
+| `onChange`     | onChange event handler            | `function` |
+
+</div>
+
+`colorConfig` prop object support four color configurations for content namely `border`, `background`, `plunk`, & `dotBackground` and 5 color configurations for radio-container namely `color`, `backgroundColor`, `borderColor`, `activeBackgroundColor`, & `activeBorderColor`.
+
+```js
+// example
+const colorConfig = {
+    background: mainColors.white,
+    border: mainColors.black,
+    plunk: colorPalette.black[50],
+    dotBackground: mainColors.white,
+    containerConfig: {
+        color: mainColors.black,
+        backgroundColor: colorPalette.black[100],
+        borderColor: hexToRGBA(mainColors.white, 0.1),
+        activeBackgroundColor: colorPalette.poliPurple[500],
+        activeBorderColor: '#2C5ECD',
+    },
+};
+```

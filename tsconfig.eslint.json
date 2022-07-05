@@ -1,0 +1,12 @@
+{
+
+    "extends": "./tsconfig.json",
+    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+    "exclude": [
+        "server/**",
+        "node_modules/**",
+        "lib/**",
+        "lib-esm/**",
+        "dist/**"
+    ]
+}

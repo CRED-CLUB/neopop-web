@@ -1,0 +1,194 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import {
+    Cross,
+    Pointer,
+    Chevron,
+    HorizontalSpacer,
+    VerticalSpacer,
+    HorizontalDivider,
+    PageContainer,
+    Row,
+    Column,
+} from '@components';
+import { Directions } from './types';
+import { mainColors } from '@primitives';
+
+<Meta title="Foundation/Miscellaneous" />
+
+# Miscellaneous
+
+Here are the few miscellaneous items to improve the developer experience.
+
+## Icons
+
+Icons are often used to display common actions like close, expand and click etc. Here are few icons as per the design system.
+
+### Cross
+
+export const CrossIcon = (args) => {
+    return <Cross {...args} />;
+};
+
+<Canvas>
+    <Story
+        name="Cross"
+        args={{
+            color: mainColors.red,
+            onClick: () => {},
+        }}
+    >
+        {CrossIcon.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Cross } from '@cred/neopop-web/lib/components';
+import { mainColors } from '@cred/neopop-web/lib/primitives';
+
+const CrossIcon = () => {
+    return <Cross color={mainColors.red} />;
+};
+
+export default CrossIcon;
+```
+
+**Props**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop        | description         | type     | default   |
+| ----------- | ------------------- | -------- | --------- |
+| `color*`    | Cross icon color    | string   | `#ffffff` |
+| `onClick*`  | click event handler | function | `null`    |
+
+</div>
+
+### Pointer
+
+export const PointerIcon = (args) => {
+    return <Pointer {...args} />;
+};
+
+<Canvas>
+    <Story
+        name="Pointer"
+        args={{
+            color: mainColors.green,
+        }}
+        argTypes={{
+            direction: {
+                options: Directions,
+                control: { type: 'select' },
+            },
+            size: {
+                options: ['medium', 'small'],
+                control: { type: 'select' },
+            },
+        }}
+    >
+        {PointerIcon.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Pointer } from '@cred/neopop-web/lib/components';
+import { mainColors } from '@cred/neopop-web/lib/primitives';
+
+const PointerIcon = () => {
+    return <Pointer color={mainColors.red} />;
+};
+
+export default PointerIcon;
+```
+
+**Props**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop        | description                                             | type          | default   |
+| ----------- | ------------------------------------------------------- | ------------- | --------- |
+| `color`     | Pointer icon color                                      | string        | `#ffffff` |
+| `direction` | Pointer direction (`east`, `west`, `north`, or `south`) | string        | `east`    |
+| `size`      | Pointer size (`small`, or `medium`)                     | string        | `medium`  |
+| `style`     | inline style                                            | CSSProperties | `null`    |
+
+</div>
+
+**Variants**
+
+<div style={{ overflowX: 'auto' }}>
+
+    <Canvas>
+        <Pointer color={mainColors.black} />
+        <Pointer color={mainColors.black} direction={Directions.WEST} />
+        <Pointer color={mainColors.black} direction={Directions.NORTH} />
+        <Pointer color={mainColors.black} direction={Directions.SOUTH} />
+        <Pointer color={mainColors.black} size="small" />
+        <Pointer color={mainColors.black} direction={Directions.WEST} size="small" />
+        <Pointer color={mainColors.black} direction={Directions.NORTH} size="small" />
+        <Pointer color={mainColors.black} direction={Directions.SOUTH} size="small" />
+    </Canvas>
+
+</div>
+
+### Chevron
+
+export const ChevronIcon = (args) => {
+    return <Chevron {...args} />;
+};
+
+<Canvas>
+    <Story
+        name="Chevron"
+        args={{
+            color: mainColors.blue,
+        }}
+        argTypes={{
+            direction: {
+                options: Directions,
+                control: { type: 'select' },
+            },
+        }}
+    >
+        {ChevronIcon.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Chevron } from '@cred/neopop-web/lib/components';
+import { mainColors } from '@cred/neopop-web/lib/primitives';
+
+const ChevronIcon = () => {
+    return <Chevron color={mainColors.red} />;
+};
+
+export default ChevronIcon;
+```
+
+**Props**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop        | description                                             | type          | default   |
+| ----------- | ------------------------------------------------------- | ------------- | --------- |
+| `color`     | Chevron icon color                                      | string        | `#ffffff` |
+| `direction` | Chevron direction (`east`, `west`, `north`, or `south`) | string        | `east`    |
+| `style`     | inline style                                            | CSSProperties | `null`    |
+
+</div>
+
+**Variants**
+
+<div style={{overflowX: 'auto'}}>
+
+    <Canvas>
+        <Chevron color={mainColors.black} />
+        <Chevron color={mainColors.black} direction={Directions.WEST} />
+        <Chevron color={mainColors.black} direction={Directions.NORTH} />
+        <Chevron color={mainColors.black} direction={Directions.SOUTH} />
+    </Canvas>
+
+</div>

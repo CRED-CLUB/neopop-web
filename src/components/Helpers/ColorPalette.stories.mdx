@@ -1,0 +1,150 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+
+<Meta title="Foundation/Colors" />
+
+# Color Palette
+
+neoPOP color palettes include state colors as well as pop palettes. You can use the colors by importing `colorPalette` primitive.
+
+```jsx
+import { colorPalette } from '@cred/neopop-web/lib/primitives';
+```
+
+## State Colors
+
+<div style={{overflowX: 'auto'}}>
+
+<ColorPalette>
+    <ColorItem
+        title="ERROR"
+        colors={{ 500: '#EE4D37', 400: '#F05E4B', 300: '#F47564', 200: '#F6A69B', 100: '#FCE2DD' }}
+    />
+    <ColorItem
+        title="WARNING"
+        colors={{ 500: '#F08D32', 400: '#F29947', 300: '#F5AC6A', 200: '#F8C699', 100: '#FBDDC2' }}
+    />
+    <ColorItem
+        title="INFO"
+        colors={{ 500: '#144CC7', 400: '#2C5ECD', 300: '#3F6FD9', 200: '#89A5E3', 100: '#C2D0F2' }}
+    />
+    <ColorItem
+        title="SUCCESS"
+        colors={{ 500: '#06C270', 400: '#1FC87F', 300: '#4FE3A3', 200: '#83E0B8', 100: '#E6F9F1' }}
+    />
+</ColorPalette>
+
+</div>
+
+## Pop Palettes
+
+<div style={{overflowX: 'auto'}}>
+
+<ColorPalette>
+    <ColorItem
+        title="POP BLACK"
+        colors={{ 500: '#0D0D0D', 400: '#121212', 300: '#161616', 200: '#3D3D3D', 100: '#8A8A8A' }}
+    />
+    <ColorItem
+        title="POP WHITE"
+        colors={{ 500: '#FFFFFF', 400: '#FBFBFB', 300: '#EFEFEF', 200: '#E0E0E0', 100: '#D2D2D2' }}
+    />
+    <ColorItem
+        title="POLI PURPLE"
+        colors={{
+            800: '#20104D',
+            700: '#351A80',
+            600: '#4A25B3',
+            500: '#6A35FF',
+            400: '#9772FF',
+            300: '#B49AFF',
+            200: '#D2C2FF',
+            100: '#E8DFFF',
+        }}
+    />
+    <ColorItem
+        title="ORANGE SUNSHINE"
+        colors={{
+            800: '#4D2914',
+            700: '#804322',
+            600: '#B35F30',
+            500: '#FF8744',
+            400: '#FFAB7C',
+            300: '#FFC3A2',
+            200: '#FFDBC7',
+            100: '#FFEFE6',
+        }}
+    />
+    <ColorItem
+        title="PINK PONG"
+        colors={{
+            800: '#4D1421',
+            700: '#802138',
+            600: '#B32E4E',
+            500: '#FF426F',
+            400: '#FF7B9A',
+            300: '#FFA0B7',
+            200: '#FFC6D4',
+            100: '#FFE1E9',
+        }}
+    />
+    <ColorItem
+        title="MANNA"
+        colors={{
+            800: '#4D3D15',
+            700: '#806623',
+            600: '#B38E30',
+            500: '#FFCB45',
+            400: '#FFDB7D',
+            300: '#FFE5A2',
+            200: '#FFEFC7',
+            100: '#FFF8E5',
+        }}
+    />
+    <ColorItem
+        title="NEO PACCHA"
+        colors={{
+            800: '#454C13',
+            700: '#727F20',
+            600: '#A0B22D',
+            500: '#E5FE40',
+            400: '#EDFE79',
+            300: '#F2FF9F',
+            200: '#F7FFC6',
+            100: '#FBFFE6',
+        }}
+    />
+    <ColorItem
+        title="YOYO"
+        colors={{
+            800: '#33134D',
+            700: '#552080',
+            600: '#772CB3',
+            500: '#AA3FFF',
+            400: '#C379FF',
+            300: '#D59FFF',
+            200: '#E5C5FF',
+            100: '#F4E5FF',
+        }}
+    />
+    <ColorItem
+        title="PARK GREEN"
+        colors={{
+            800: '#124D34',
+            700: '#1E8057',
+            600: '#29B379',
+            500: '#3BFFAD',
+            400: '#76FFC6',
+            300: '#9DFFD6',
+            200: '#C4FFE6',
+            100: '#DDFFF1',
+        }}
+    />
+</ColorPalette>
+
+</div>
+
+**NOTE**: Component level color-guides are already defined as per the design system. You can use it by importing `colorGuide` primitive.
+
+```jsx
+import { colorGuide } from '@cred/neopop-web/lib/primitives';
+```

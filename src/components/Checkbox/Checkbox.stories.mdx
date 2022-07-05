@@ -1,0 +1,288 @@
+import { useState } from 'react';
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Checkbox, Typography, Row, VerticalSpacer, HorizontalSpacer } from '@components';
+import { colorGuide, colorPalette, FontVariant } from '@primitives';
+
+<Meta
+    title="Components/Checkbox"
+    component={Checkbox}
+    argTypes={{
+        colorConfig: {
+            background: {
+                control: { type: 'color' },
+            },
+            border: {
+                control: { type: 'color' },
+            },
+            leftPlunk: {
+                control: { type: 'color' },
+            },
+            topPlunk: {
+                control: { type: 'color' },
+            },
+        },
+    }}
+/>
+
+# Checkbox
+
+Checkbox component is used when the users wants to select one or more items from a set of options.
+
+## Usage
+
+#### 1. Single Checkbox with label
+
+export const SingleCheckbox = (args) => {
+    const [isChecked, setIsChecked] = useState(false);
+    const handleChange = (event) => {
+        setIsChecked(event.target.checked);
+    };
+    return (
+        <Checkbox {...args} isChecked={isChecked} handleChange={handleChange}>
+            <Typography {...FontVariant.BodyRegular16} color={colorPalette.popBlack[100]}>
+                I agree to terms & conditions
+            </Typography>
+        </Checkbox>
+    );
+};
+
+<Canvas>
+    <Story
+        name="Single Checkbox with label"
+        args={{ colorConfig: colorGuide.lightComponents.checkbox }}
+    >
+        {SingleCheckbox.bind()}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Row, Checkbox, VerticalSpacer, Typography } from '@cred/neopop-web/lib/components';
+import { colorGuide, colorPalette, FontVariant } from '@cred/neopop-web/lib/primitives';
+
+export const SingleCheckbox = () => {
+    const [isChecked, setIsChecked] = useState(false);
+    const handleChange = (event) => {
+        setIsChecked(event.target.checked);
+    };
+
+    return (
+        <Checkbox
+            isChecked={isChecked}
+            colorConfig={colorGuide.lightComponents.checkbox}
+            handleChange={handleChange}
+        >
+            <Typography {...FontVariant.BodyRegular16} color={colorPalette.popBlack[100]}>
+                I agree to terms & conditions
+            </Typography>
+        </Checkbox>
+    );
+};
+
+export default SingleCheckbox;
+```
+
+#### 2. Multiple Checkboxes with label
+
+export const MultipleCheckboxes = (args) => {
+    const [options, setOptions] = useState([
+        {
+            name: 'CRED mint',
+            isChecked: false,
+        },
+        {
+            name: 'Store',
+            isChecked: false,
+        },
+        {
+            name: 'Utility Bills',
+            isChecked: false,
+        },
+    ]);
+    const handleChange = (event, index) => {
+        const tempOptions = [...options];
+        tempOptions[index].isChecked = !tempOptions[index].isChecked;
+        setOptions(tempOptions);
+    };
+    return (
+        <form>
+            {options.map((option, index) => {
+                return (
+                    <React.Fragment key={option.name}>
+                        <Checkbox
+                            {...args}
+                            name={option.name}
+                            isChecked={option?.isChecked || false}
+                            handleChange={(event) => handleChange(event, index)}
+                        >
+                            <Typography
+                                {...FontVariant.BodyRegular16}
+                                color={colorPalette.popBlack[100]}
+                            >
+                                {option.name}
+                            </Typography>
+                        </Checkbox>
+                        <HorizontalSpacer n={4} />
+                    </React.Fragment>
+                );
+            })}
+        </form>
+    );
+};
+
+<Canvas>
+    <Story
+        name="Multiple Checkbox with label"
+        args={{ colorConfig: colorGuide.lightComponents.checkbox }}
+    >
+        {MultipleCheckboxes.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import {
+    Row,
+    Checkbox,
+    VerticalSpacer,
+    HorizontalSpacer,
+    Typography,
+} from '@cred/neopop-web/lib/components';
+import { colorGuide, colorPalette, FontVariant } from '@cred/neopop-web/lib/primitives';
+
+const MultipleCheckboxes = () => {
+    const [options, setOptions] = useState([
+        {
+            name: 'CRED mint',
+            isChecked: false,
+        },
+        {
+            name: 'Store',
+            isChecked: false,
+        },
+        {
+            name: 'Utility Bills',
+            isChecked: false,
+        },
+    ]);
+
+    const handleChange = (event, index) => {
+        const tempOptions = [...options];
+        tempOptions[index].isChecked = !tempOptions[index].isChecked;
+        setOptions(tempOptions);
+    };
+
+    return (
+        <form>
+            {options.map((option, index) => {
+                return (
+                    <React.Fragment key={option.name}>
+                        <Checkbox
+                            name={option.name}
+                            isChecked={option?.isChecked || false}
+                            colorConfig={colorGuide.lightComponents.checkbox}
+                            handleChange={(e) => handleClick(e, index)}
+                        >
+                            <Typography
+                                {...FontVariant.BodyRegular16}
+                                color={colorPalette.popBlack[100]}
+                            >
+                                {option.name}
+                            </Typography>
+                        </Checkbox>
+                        <HorizontalSpacer n={4} />
+                    </React.Fragment>
+                );
+            })}
+        </form>
+    );
+};
+
+export default MultipleCheckboxes;
+```
+
+## Variants
+
+There are two states of checkbox
+
+#### Selected
+
+export const Selected = (args) => {
+    return (
+        <Checkbox {...args}>
+            <Typography {...FontVariant.BodyRegular16} color={colorPalette.popBlack[100]}>
+                Selected
+            </Typography>
+        </Checkbox>
+    );
+};
+
+<Canvas>
+    <Story
+        name="Selected"
+        args={{
+            isChecked: true,
+            colorConfig: colorGuide.lightComponents.checkbox,
+            onChange: (event) => {
+                console.log(event.target.checked);
+            },
+        }}
+    >
+        {Selected.bind({})}
+    </Story>
+</Canvas>
+
+#### Unselected
+
+export const Unselected = (args) => {
+    return (
+        <Checkbox {...args}>
+            <Typography {...FontVariant.BodyRegular16} color={colorPalette.popBlack[100]}>
+                Unselected
+            </Typography>
+        </Checkbox>
+    );
+};
+
+<Canvas>
+    <Story
+        name="Unselected"
+        args={{
+            isChecked: false,
+            colorConfig: colorGuide.lightComponents.checkbox,
+            onChange: (event) => {
+                console.log(event.target.checked);
+            },
+        }}
+    >
+        {Unselected.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop           | description                       | type       |
+| -------------- | --------------------------------- | ---------- |
+| `isChecked*`   | if true, the component is checked | `boolean`  |
+| `colorConfig`  | checkbox color config             | `object`   |
+| `colorMode`    | dark or light                     | `string`   |
+| `onChange`     | onChange event handler            | `function` |
+
+</div>
+
+**colorConfig**
+
+colorConfig prop object support four color configurations namely: `background`, `border`, `leftPlunk`, & `topPlunk`.
+
+<div style={{overflowX: 'auto'}}>
+
+| property        | description               | type     |
+| --------------- | ------------------------- | -------- |
+| `background*`   | checkbox background color | `string` |
+| `border*`       | checkbox border color     | `string` |
+| `leftPlunk*`    | left-plunk color          | `string` |
+| `topPlunk*`     | top-plunk color           | `string` |
+
+</div>

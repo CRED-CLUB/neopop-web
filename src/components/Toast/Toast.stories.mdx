@@ -1,0 +1,209 @@
+import { ArgsTable, Story, Canvas, Meta } from '@storybook/addon-docs';
+import { Row, VerticalSpacer } from '@components';
+import { mainColors } from '@primitives';
+import { showToast, ToastContainer } from '.';
+import { Toast } from './components/ToastPortal';
+
+<Meta
+    title="Components/Toasts"
+    decorators={[
+        (Story) => (
+            <>
+                <ToastContainer />
+                {Story()}
+            </>
+        ),
+    ]}
+    component={Toast}
+/>
+
+export const ToastTemplate = (args) => (
+    <button onClick={() => showToast(`${args.content}`, { ...args })}>Click for toast</button>
+);
+
+export const toastArgTypes = {
+    content: {
+        description: 'Toast message',
+        type: {
+            required: true,
+        },
+    },
+    type: {
+        description: 'Type of toast - `success` | `error` | `warning`',
+    },
+    id: {
+        table: {
+            disable: true,
+        },
+    },
+    removeToast: {
+        table: {
+            disable: true,
+        },
+    },
+    description: {
+        description: 'Toast subtext',
+    },
+    colorConfig: {
+        description: 'Toast appearance (color and background)',
+        defaultValue: {
+            background: mainColors.red,
+            color: '#F8F8F8',
+        },
+    },
+    fullWidth: {
+        description: 'Toast width',
+    },
+    dismissOnClick: {
+        description: 'Click to dismiss toast',
+    },
+    autoCloseTime: {
+        description: 'Auto close time in ms',
+    },
+    icon: {
+        description: 'Toast with icon source',
+    },
+};
+
+# Toasts
+
+Toasts is used as a non blocking notification with short message for users to get a quick glance.
+
+## Usage
+
+1. Add `ToastContainer` anywhere in the DOM tree.
+2. Call `showToast` method with message as first argument and object with toast configuration props as second argument.
+3. You can pass the `type` as `success` | `error` | `warning` or can pass custom `colorConfig` to change the color of the toast.
+
+<br />
+
+#### App.jsx
+
+```jsx
+import { ToastContainer } from '@cred/neopop-web/lib/components';
+import MainApp from './MainApp.jsx'; // Any component
+import ToastDemo from './ToastDemo.jsx';
+
+const App = () => {
+    return (
+        <div>
+            {/* Mounting ToastContainer in DOM  */}
+            <ToastContainer />
+            <MainApp />
+            <ToastDemo />
+        </div>
+    );
+};
+```
+
+#### ToastDemo.jsx
+
+```jsx
+import { showToast } from '@cred/neopop-web/lib/components';
+import { mainColors } from '@cred/neopop-web/lib/primitives';
+
+const ToastDemo = () => {
+    const showToastNotif = () => {
+        showToast('Sample toast message', { type: 'success', autoCloseTime: '5000' });
+    };
+
+    return <button onClick={() => showToastNotif()}>Click for toast</button>;
+};
+
+export default ToastDemo;
+```
+
+## Variants
+
+### Error Toast
+
+<Canvas>
+    <Story
+        name="Error Toast"
+        args={{ content: 'Something went wrong! Please try again.' }}
+        argTypes={toastArgTypes}
+    >
+        {ToastTemplate.bind({})}
+    </Story>
+</Canvas>
+
+### Warning Toast
+
+<Canvas>
+    <Story
+        name="Warning Toast"
+        args={{
+            content: 'Your request is already in process.',
+            type: 'warning',
+        }}
+    >
+        {ToastTemplate.bind({})}
+    </Story>
+</Canvas>
+
+### Success Toast
+
+<Canvas>
+    <Story
+        name="Success Toast"
+        args={{
+            content: 'Your credit score was refreshed successfully.',
+            type: 'success',
+        }}
+    >
+        {ToastTemplate.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+`showToast(content: string, options: object)` function takes two arguments
+
+<div style={{overflowX: 'auto'}}>
+
+| prop         | description                     | type     |
+| ------------ | ------------------------------- | -------- |
+| `content*`   | toast message                   | `string` |
+| `options`    | configuration for toast options | `object` |
+
+</div>
+
+`options`
+
+<div style={{overflowX: 'auto'}}>
+
+| prop             | description                                                                  | type      |
+| ---------------- | ---------------------------------------------------------------------------- | --------- |
+| `description`    | toast subtext                                                                | `string`  |
+| `type`           | `success`, `warning`, or `error` - this also decides the color               | `string`  |
+| `colorConfig`    | `{ background: string, color: string }`                                      | `object`  |
+| `textStyle`      | used for passing the font styles for toast content (message) and description | `object`  |
+| `fullWidth`      | toast width with default true                                                | `boolean` |
+| `dismissOnClick` | if true, it will dismiss on click                                            | `boolean` |
+| `autoCloseTime`  | auto close time in ms                                                        | `number`  |
+| `icon`           | toast with icon source                                                       | `string`  |
+
+</div>
+
+**textStyle**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop          | description                                | type                              |
+| ------------- | ------------------------------------------ | --------------------------------- |
+| `heading`     | font style to be used for heading text     | `object - FontNameSpaceInterface` |
+| `description` | font style to be used for description text | `object - FontNameSpaceInterface` |
+
+</div>
+
+**FontNameSpaceInterface**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop            | description        | type                                       |
+| --------------- | ------------------ | ------------------------------------------ |
+| `fontType*`     | typography variant | `heading`, `caps`, `body`, `serif-heading` |
+| `fontWeight*`   | weight of the text | `800`, `700`, `600`, `500`, `400`, `300`   |
+| `fontSize*`     | size of the text   | `string`                                   |
+
+</div>
