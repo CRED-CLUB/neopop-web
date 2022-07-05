@@ -1,0 +1,120 @@
+import { useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { colorGuide } from '@primitives';
+import { Row, VerticalSpacer, Toggle } from '@components';
+
+<Meta title="Components/Toggle" component={Toggle} />
+
+# Toggle
+
+Toggle component allow users to turn on or off a single option. They are usually used to enable or disable a specific setting.
+
+export const ToggleButton = () => {
+    const [isChecked, setIsChecked] = useState(false);
+    const handleChange = (event) => {
+        console.log(event.target.checked);
+        setIsChecked(event.target.checked);
+    };
+    return (
+        <Toggle
+            isChecked={isChecked}
+            onChange={handleChange}
+            colorConfig={colorGuide.lightComponents.toggle}
+        />
+    );
+};
+
+## Usage
+
+<Canvas>
+    <ToggleButton />
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Toggle } from '@cred/neopop-web/lib/components';
+import { colorGuide } from '@cred/neopop-web/lib/primitives';
+
+const ToggleButton = () => {
+    const [isChecked, setIsChecked] = useState(false);
+    const handleChange = (event) => {
+        console.log(event.target.checked);
+        setIsChecked(event.target.checked);
+    };
+
+    return (
+        <Toggle
+            isChecked={isChecked}
+            colorConfig={colorGuide.lightComponents.toggle}
+            onChange={handleChange}
+        />
+    );
+};
+
+export default ToggleButton;
+```
+
+## Variants
+
+Toggle component has two states namely on or off.
+
+export const ToggleVariant = (args) => {
+    return <Toggle {...args} />;
+};
+
+#### On
+
+<Canvas>
+    <Story
+        name="ToggleOn"
+        args={{
+            isChecked: true,
+            colorConfig: colorGuide.lightComponents.toggle,
+            onChange: () => {},
+        }}
+    >
+        {ToggleVariant.bind({})}
+    </Story>
+</Canvas>
+
+#### Off
+
+<Canvas>
+    <Story
+        name="ToggleOff"
+        args={{
+            isChecked: false,
+            colorConfig: colorGuide.lightComponents.toggle,
+            onChange: () => {},
+        }}
+    >
+        {ToggleVariant.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop           | description                | type       |
+| -------------- | -------------------------- | ---------- |
+| `isChecked*` | if true, toggle is checked | `boolean`  |
+| `colorConfig`  | toggle color config        | `object`   |
+| `colorMode`    | dark or light              | `string`   |
+| `onChange`     | onChange event handler     | `function` |
+
+</div>
+
+`colorConfig` prop object support five color configurations for both on & off states namely: `switchBackground`, `switchBorder`, `buttonBackground`, `buttonBorder`, & `buttonMarkBackground`.
+
+<div style={{overflowX: 'auto'}}>
+
+| property                  | description                         | type     |
+| ------------------------- | ----------------------------------- | -------- |
+| `switchBackground*`       | toggle background color             | `string` |
+| `switchBorder*`           | toggle border color                 | `string` |
+| `buttonBackground*`       | toggle button background color      | `string` |
+| `buttonBorder*`           | toggle button border color          | `string` |
+| `buttonMarkBackground*`   | toggle button mark background color | `string` |
+
+</div>

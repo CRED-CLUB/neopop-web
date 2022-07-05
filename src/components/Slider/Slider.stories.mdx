@@ -1,0 +1,74 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import Slider from '@components/Slider';
+import { useState } from 'react';
+
+<Meta title="Components/Slider" component={Slider} />
+
+# Slider
+
+Slider is ideal for showing a range of values, from which users may select a single value. Common use cases include selecting amount from a given range, brightness, volume settings.
+
+## Usage
+
+export const SliderTemplate = (args) => {
+    return <Slider  {...args} />;
+};
+
+export const SliderTemplateArgs = {
+    min: 0,
+    max: 100,
+    step: 1
+};
+
+<Canvas>
+    <Story name='Slider' args={SliderTemplateArgs}>
+        {SliderTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Slider } from '@cred/neopop-web/lib/components';
+
+const SliderExample = () => {
+    return (
+        <Slider min={0} max={100} step={0.01} />
+    )
+}
+```
+
+## Props
+
+| prop                  | description                                                                                       | type       
+| -------------         | ------------------------------------------------------------------------------------------------- | --------   
+| `min*`                | Minimum value the slider can take as input                                                        | number     
+| `max*`                | Maximum value the slider can take as input                                                        | number
+| `step*`              | Specifies the size of each movement of the slider control                                         | number
+| `defaultValue`        | Sets the default value of the slider control                                                      | number     
+| `value`               | Sets the current value of the slider control                                                      | number  
+| `sliderConfig`        | Object that takes the slider config to control slider UI                                          | object
+| `thumbConfig`         | Object that takes the thumb config to control slider thumb UI                                     | object
+| `onInput`             | Handle input event, occurs immediately after the value of an element has changed                  | function   
+| `onChange`            | Handle change event, occurs when the element loses focus, after the value has changed             | function  
+| `style`               | Pass CSS styles to customize the slider according to your requirements                            | CSSProperties
+
+You can pass the following fields in the `sliderConfig` object to control how the slider looks.
+
+| field                 | description                                                                           | type       
+| -------------         | ------------------------------------------------------------------------------------- | --------  
+| `sliderWidth`         | Sets the width of the slider                                                          | string 
+| `sliderHeight`        | Sets the height of the slider                                                         | string 
+| `sliderBackground`    | Sets the background color of the slider bar                                           | string 
+| `sliderTransition`    | Sets the transition effect of the slider, eg. color change transition on sliding      | string
+
+You can pass the following fields in the `thumbConfig` object to control how the slider thumb looks.
+
+| field                 | description                                                                           | type       
+| -------------         | ------------------------------------------------------------------------------------- | --------  
+| `thumbWidth`          | Sets the width of the slider thumb                                                    | string         
+| `thumbHeight`         | Sets the height of the slider thumb                                                   | string     
+| `thumbBackground`     | Sets the background of the slider thumb                                               | string     
+| `thumbBackgroundSize` | Sets the background size of the slider thumb                                          | string     
+| `thumbBackgroundColor`| Sets the background color of the slider thumb                                         | string     
+| `thumbBorder`         | Sets the border of the slider thumb                                                   | string     
+| `thumbBorderRadius`   | Sets the border radius of the slider thumb                                            | string     

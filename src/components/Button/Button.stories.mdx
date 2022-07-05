@@ -1,0 +1,183 @@
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
+import Button from '.';
+import { mainColors } from '@primitives';
+
+<Meta title="Components/Button" component={Button} />
+
+export const SampleButton = (args) => {
+    return (
+        <div style={{ width: '100%' }}>
+            <Button {...args}>Try me</Button>
+        </div>
+    );
+};
+
+# Button
+
+Button component allows to render neoPOP styled - Elevated, Flat, and Link type of Button and trigger an `onClick` action on tap/press.
+
+## Usage
+
+-   Button component decides text color, background color, edge colors, and border color based on the `variant`, `kind`, and `colorMode` props.
+-   Spacing of the button - height, padding, icon height (if any icon is passed) is decided by the `size` prop.
+-   Text style of the button is also decided by the `size` prop.
+-   Button component is super flexible as it supports these configs:
+    -   `colorConfig` prop for all the colors
+    -   `spacingConfig` prop for - height, iconHeight, and padding
+    -   `textStyle` for custom textStyle - fontWeight, fontSize, fontType
+
+<Canvas style={{ background: '#0d0d0d' }}>
+    <Story
+        name="Sample Button"
+        args={{
+            kind: 'elevated',
+            size: 'big',
+            colorMode: 'light',
+            onClick: () => {
+                console.log("I'm clicked");
+            },
+        }}
+    >
+        {SampleButton.bind()}
+    </Story>
+</Canvas>
+
+```jsx
+import { Button } from '@cred/neopop-web/lib/components';
+
+const Page = () => {
+    return (
+        <Button
+            variant="primary"
+            kind="elevated"
+            size="big"
+            colorMode="dark"
+            onClick={() => {
+                console.log("I'm clicked");
+            }}
+        >
+            Primary
+        </Button>
+    );
+};
+
+export default Page;
+```
+
+## Variants
+
+### Kinds
+
+There can be 3 different types of button.
+
+<Canvas>
+    <Button kind="flat">Flat</Button>
+    <Button kind="elevated">Elevated</Button>
+    <Button kind="link" color={mainColors.black}>
+        Link
+    </Button>
+</Canvas>
+
+There can be 2 different variants of `flat` and `elevated` kind buttton
+
+<Canvas>
+    <Button variant="primary" kind="flat" size="big">
+        Primary
+    </Button>
+    <Button variant="secondary" kind="flat" size="big">
+        Secondary
+    </Button>
+    <Button variant="primary" kind="elevated" size="big">
+        Primary
+    </Button>
+    <Button variant="secondary" kind="elevated" size="big">
+        Secondary
+    </Button>
+</Canvas>
+
+### Sizes
+
+<Canvas>
+    <Button variant="primary" kind="flat" size="big">
+        Big
+    </Button>
+    <Button variant="primary" kind="flat" size="medium">
+        Medium
+    </Button>
+    <Button variant="primary" kind="flat" size="small">
+        Small
+    </Button>
+</Canvas>
+
+### Styles
+
+<Canvas>
+    <Button variant="primary">Only text</Button>
+    <Button variant="primary" showArrow>
+        Text and arrow
+    </Button>
+    <Button
+        variant="primary"
+        icon="https://pngroyale.com/wp-content/uploads/2021/12/Download-blue-information-icon-Free-PNG-300x300.png"
+    >
+        Text, Icon, and arrow
+    </Button>
+</Canvas>
+
+### States
+
+<Canvas>
+    <Button>Active</Button>
+    <Button className="active">Pressed</Button>
+    <Button disabled>Disabled</Button>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop                 | description                                                                                                                                                                                                                                                | type             |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `kind*`              | different kind of button <br/> `"flat"` `"elevated"` `"link"`                                                                                                                                                                                              | `string`         |
+| `children*`          | use to render the center text or can pass any React Element                                                                                                                                                                                                | `ReactNode`      |
+| `style`              | custom styles if any                                                                                                                                                                                                                                       | `CSS Properties` |
+| `size`               | `"big"`, `"medium"` or `"small"` - used to decide the paddings, height, and typography style                                                                                                                                                               | `string`         |
+| `variant`            | `"primary"` or `"secondary"` variant of `flat` or `elevated` button                                                                                                                                                                                        | `string`         |
+| `colorMode`          | `"dark"` or `"light"` mode of the button                                                                                                                                                                                                                   | `string`         |
+| `elevationDirection` | specifies the direction for an `elevated` button. this will decide which plunk to hide or show when button is pressed. <br/> `"bottom-right"` `"top-right"` `"bottom-left"` `"top-left"` `"bottom-center"` `"top-center"` `"right-center"` `"left-center"` | `string`         |
+| `fullWidth`          | flex the button to take full-width of the container                                                                                                                                                                                                        | `boolean`        |
+| `showArrow`          | arrow icon in the button                                                                                                                                                                                                                                   | `boolean`        |
+| `disabled`           | if true, button is disabled                                                                                                                                                                                                                                | `object`         |
+| `colorConfig`        | object for taking in colors                                                                                                                                                                                                                                | `object`         |
+| `spacingConfig`      | object for taking in spacing details                                                                                                                                                                                                                       | `object`         |
+| `textStyle`          | text style - passes configs for `Typography` <br/> `{ fontWeight: FontWeights, fontSize: number, fontType: FontType }`                                                                                                                                     | `object`         |
+| `icon`               | url for any image to be set, this aligns left to the text                                                                                                                                                                                                  | `string`         |
+
+</div>
+
+`colorConfig` prop object takes in all the colors related to button.
+It also takes `disabledColors` which takes in the same props but applied when `disabled` is true.
+
+<div style={{overflowX: 'auto'}}>
+
+| field             | description                                                                                                      | type     |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
+| `borderColor`     | border color for the borders of face                                                                             | `string` |
+| `backgroundColor` | background color for the face                                                                                    | `string` |
+| `edgeColors`      | colors for the plunk (left, right, top, bottom) <br/> `{ left: color, top: color, right: color, bottom: color }` | `object` |
+| `color`           | text color                                                                                                       | `string` |
+| `disabledColors`  | object of `borderColor`, `backgroundColor`, `edgeColors`, and `color` to be applied when `disabled` is true.     | `string` |
+
+</div>
+
+`spacingConfig` prop object takes in `padding`, `height` and `iconHeight`
+
+<div style={{overflowX: 'auto'}}>
+
+| field        | description                                                | type     |
+| ------------ | ---------------------------------------------------------- | -------- |
+| `padding`    | takes padding around the text - all CSS patterns supported | `string` |
+| `height`     | height of the button - in px                               | `string` |
+| `iconHeight` | fixed height for the icon, width is set to auto            | `string` |
+
+</div>

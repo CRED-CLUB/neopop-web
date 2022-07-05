@@ -1,0 +1,153 @@
+import { Meta, ColorPalette, ColorItem, ArgsTable, Story, Canvas } from '@storybook/addon-docs';
+import InputField from '.';
+
+<Meta title="Components/InputField" component={InputField} />
+
+export const InputFieldTemplate = (args) => (
+    <div style={{ background: 'white', padding: '30px' }}>
+        <InputField {...args} />
+    </div>
+);
+
+# Input Field
+
+export const inputArgTypes = {
+    label: 'your name',
+    placeholder: 'enter your name',
+    type: 'text',
+    inputMode: 'text',
+    maxLength: 30,
+    id: 'text_field',
+    autoFocus: true,
+    colorMode: 'light',
+    colorConfig: {
+        labelColor: '#0d0d0d',
+        textColor: '#000000',
+    },
+};
+
+export const inputWarningArgTypes = {
+    label: 'your name',
+    placeholder: 'enter your name',
+    type: 'text',
+    inputMode: 'text',
+    maxLength: 30,
+    id: 'text_field',
+    autoFocus: true,
+    errorMessage: 'error message comes here',
+    hasError: true,
+    colorConfig: {
+        textColor: '#0d0d0d',
+        errorColor: '#EE4D37',
+    },
+};
+
+An input field includes a label and a text field users can type text into.
+
+## Usage
+
+```jsx
+import React from 'react';
+import { InputField } from '@cred/neopop-web/lib/components';
+
+const InputFieldExample = () => {
+    return (
+        <div>
+            <InputField
+                type="text"
+                label="your name"
+                placeholder="enter your name"
+                id="text_field"
+                autoFocus
+            />
+        </div>
+    );
+};
+
+export default InputFieldExample;
+```
+
+## Variants
+
+<Canvas>
+    <Story name="InputField" args={{ ...inputArgTypes }}>
+        {InputFieldTemplate.bind({})}
+    </Story>
+</Canvas>
+
+### With Error Message
+
+<Canvas>
+    <Story name="InputWarningField" args={{ ...inputWarningArgTypes }}>
+        {InputFieldTemplate.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop           | description                                                                              | type                                                                        |
+| -------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| name           | specifies the name                                                                       | `string`                                                                    |
+| isDisabled     | disable state                                                                            | `bool`                                                                      |
+| placeholder    | defines placeholder for the field                                                        | `string`                                                                    |
+| scrollIntoView | -                                                                                        | `bool`                                                                      |
+| id             | the unique identifier for this field                                                     | `string`                                                                    |
+| label          | specifies caption for the element                                                        | `string`                                                                    |
+| type           | specifies the type of the input field                                                    | `text` , `tel` , `number`                                                   |
+| onChange       | event when the user commits a value change to a form control                             | `func`                                                                      |
+| maxLength      | specifies the maximum value                                                              | `number`                                                                    |
+| value          | specifies the value of an element                                                        | `any`                                                                       |
+| tabIndex       | indicates the element can be focused, and participates in sequential keyboard navigation | `number`                                                                    |
+| autoComplete   | specifies whether an element should have autocomplete enabled                            | `string`                                                                    |
+| onBlur         | event when an element loses focus                                                        | `func`                                                                      |
+| onFocus        | event when the user sets focus on an element                                             | `number`                                                                    |
+| style          | for inline styles                                                                        | `React.CSSProperties`                                                       |
+| autoFocus      | specifies that an element should automatically get focus when the page loads             | `bool`                                                                      |
+| hasError       | specifies error state                                                                    | `bool`                                                                      |
+| inputRef       | ref attribute for input field                                                            | React.MutableRefObject<HTMLInputElement &vert; null>                        |
+| errorMessage   | defines error message                                                                    | `string`                                                                    |
+| colorConfig    | can be used for passing additional color configurations                                  | `object`                                                                    |
+| colorMode      | dark or light                                                                            | `string`                                                                    |
+| textStyle      | can be used for passing font styles for label and input                                  | `object`                                                                    |
+| inputMode      | allows browser to display an appropriate virtual keyboard                                | `text` , `search`, `tel` , `url` , `email` , `numeric` , `decimal` , `none` |
+
+</div>
+
+**colorConfig**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop             | description                                              | type     |
+| ---------------- | -------------------------------------------------------- | -------- |
+| textColor        | color to be used by input element in active state        | `string` |
+| labelColor       | color to be used for the label above input field         | `string` |
+| caretColor       | color to be used for the caret (cursor)                  | `string` |
+| errorColor       | color to be used for the error message                   | `string` |
+| placeholderColor | color to be used for the placeholder text in input field | `string` |
+
+</div>
+
+**textStyle**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop  | description                                | type                              |
+| ----- | ------------------------------------------ | --------------------------------- |
+| label | font style to be used for label text       | `object - FontNameSpaceInterface` |
+| input | font style to be used for input field text | `object - FontNameSpaceInterface` |
+
+</div>
+
+**FontNameSpaceInterface**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop            | description        | type                                       |
+| --------------- | ------------------ | ------------------------------------------ |
+| `fontType*`     | typography variant | `heading`, `caps`, `body`, `serif-heading` |
+| `fontWeight*`   | weight of the text | `800`, `700`, `600`, `500`, `400`, `300`   |
+| `fontSize*`     | size of the text   | `string`                                   |
+
+</div>

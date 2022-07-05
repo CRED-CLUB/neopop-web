@@ -1,0 +1,197 @@
+import { ComponentStory } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
+import BottomSheet, { BottomSheetCustom } from '.';
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import { colorPalette, mainColors, FontVariant } from '@primitives';
+import { Typography, Button } from '@components';
+
+<Meta
+    title="Components/BottomSheet"
+    component={BottomSheet}
+    argTypes={{
+        open: {
+            control: { type: 'boolean' },
+            defaultValue: false,
+        },
+        handleClose: {
+            action: 'Close triggered',
+            description: 'this will handle the logic to change isOpen flag',
+        },
+        sheetStyle: {
+            control: { type: 'object' },
+            defaultValue: {},
+        },
+        sheetPlunkColor: {
+            control: { type: 'color' },
+            defaultValue: '',
+        },
+        maxHeight: {
+            control: { type: 'string' },
+            description: 'example 80%',
+        },
+        overlayColor: {
+            control: { type: 'color' },
+            description: 'overlay color',
+        },
+        node: {
+            control: { type: 'object' },
+            description: 'DOM node in which to mount the bottomsheet (default is document.body)',
+        },
+        blocking: {
+            control: { type: 'boolean' },
+            defaultValue: false,
+        },
+        onAfterClose: {
+            action: 'Close triggered',
+        },
+        onBeforeClose: {
+            control: { type: 'function' },
+            description: 'event handler to run before starting the close animation',
+        },
+        onCloseEnd: {
+            control: { type: 'function' },
+            description: 'event handler to run after close animation finished',
+        },
+    }}
+/>
+
+export const Template = (args) => {
+    const [, updateArgs] = useArgs();
+    const { handleClose, ...props } = args;
+    const closeHandler = () => {
+        handleClose();
+        updateArgs({ open: false });
+    };
+    return (
+        <>
+            <Button onClick={() => updateArgs({ open: true })} type="button">
+                Open
+            </Button>
+            <BottomSheet {...props} handleClose={closeHandler}>
+                <Typography style={{ textAlign: 'center' }} color={colorPalette.popBlack[400]}>
+                    BottomSheet Content
+                </Typography>
+            </BottomSheet>
+        </>
+    );
+};
+
+export const Template2 = (args) => {
+    const [, updateArgs] = useArgs();
+    const { handleClose, ...props } = args;
+    const closeHandler = () => {
+        handleClose();
+        updateArgs({ open: false });
+    };
+    return (
+        <>
+            <Button onClick={() => updateArgs({ open: true })} type="button">
+                Open
+            </Button>
+            <BottomSheetCustom {...props} handleClose={closeHandler}>
+                <div>
+                    <Typography style={{ textAlign: 'center' }}>
+                        1914 translation by H. Rackham
+                    </Typography>
+                </div>
+            </BottomSheetCustom>
+        </>
+    );
+};
+
+# BottomSheet
+
+BottomSheet is modal like component but more optimized for mobile devices
+
+## Usage
+
+#### Default
+
+```jsx
+export const MyComponent = (props) => {
+    const [isOpen, setOpen] = useState();
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    return (
+        <>
+            <Button onClick={() => setOpen(true)} type="button">
+                Open
+            </Button>
+            <BottomSheet open={isOpen} handleClose={handleClose}>
+                <Typography style={{ textAlign: 'center' }} color={colorPalette.popBlack[400]}>
+                    1914 translation by H. Rackham
+                </Typography>
+            </BottomSheet>
+        </>
+    );
+};
+```
+
+#### Custom
+
+```jsx
+export const MyComponent = (props) => {
+    const [isOpen, setOpen] = useState();
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <>
+            <Button onClick={() => setOpen(true)} type="button">
+                Open
+            </Button>
+            <BottomSheetCustom open={isOpen} handleClose={handleClose}>
+                <div className="my-custom-background-element">
+                    <Typography style={{ textAlign: 'center' }}>
+                        1914 translation by H. Rackham
+                    </Typography>
+                </div>
+            </BottomSheetCustom>
+        </>
+    );
+};
+```
+
+## Variants
+
+There are two states of BottomSheet
+
+#### Default
+
+<Canvas>
+    <Story name="Default" args={{}}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+#### Custom
+
+<Canvas>
+    <Story name="Custom" args={{}}>
+        {Template2.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop              | description                                                                                   | type             |
+| ----------------- | --------------------------------------------------------------------------------------------- | ---------------- |
+| `open` \*         | controls the state of bottomsheet. if true, bottomsheet opens                                 | `boolean`        |
+| `handleClose` \*  | callback function that triggers on close action (for example if someone click/tap on overlay) | `function`       |
+| `sheetStyle`      | custom styles                                                                                 | `CSS Properties` |
+| `sheetPlunkColor` | color of plunk                                                                                | `string`         |
+| `maxHeight`       | max height that bottom sheet will take to show content                                        | `string`         |
+| `overlayColor`    | transparency and color of overlay                                                             | `string`         |
+| `node`            | DOM node on which to mount to (we use ReactPortal under the hood) default is `document.body`  | `HTMLElement`    |
+| `blocking`        | if true Bottomsheet won't close on clicking/tapping the overlay                               | `boolean`        |
+| `onAfterClose`    | event handler which triggers after unmounting the bottomsheet                                 | `function`       |
+| `onBeforeClose`   | event handler which triggers before close animation starts                                    | `function`       |
+| `onCloseEnd`      | event handler which triggers after close animation ends                                       | `function`       |
+
+</div>

@@ -1,0 +1,448 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import {
+    HorizontalSpacer,
+    VerticalSpacer,
+    HorizontalDivider,
+    PageContainer,
+    Row,
+    Button,
+    Column,
+} from '@components';
+import { Directions } from './types';
+import { mainColors, colorPalette } from '@primitives';
+
+<Meta title="Foundation/Layout" />
+
+# Layout & Spacing
+
+Let's understand the basic building blocks of the neopop-web to build a strong foundation. It includes layout, & spacing related items needed to improve the developer experience.
+
+## Layout
+
+Defining layout becomes essential to maintain design uniformity. Components like PageContainer, Row, & Column etc are the most commonly used layouts and let's understand how to use it in your project.
+
+### PageContainer
+
+Wrap your page content into PageContainer to give paddings. As per the design system padding-right is `15px` and padding-left is `30px`.
+
+```jsx
+import React from 'react';
+import { PageContainer } from '@cred/neopop-web/lib/components';
+
+const Page = ({ children }) => {
+    return <PageContainer>{children}</PageContainer>;
+};
+
+export default Page;
+```
+
+### Row
+
+Easiest way to create rows. It uses flex under the hood. It comes with `v-justify`, `h-center`, & `v-center` pre-defined classes that makes the component more flexible.
+
+export const RowTemplate = (args) => {
+    return (
+        <Row {...args}>
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <VerticalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Row>
+    );
+};
+
+<Canvas>
+    <Story name="Row" args={{}}>
+        {RowTemplate.bind()}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Row, Button, VerticalSpacer } from '@cred/neopop-web/lib/components';
+
+const BoxRow = () => {
+    return (
+        <Row>
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <VerticalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Row>
+    );
+};
+
+export default BoxRow;
+```
+
+#### Variants
+
+##### v-justify
+
+It adds `justify-content: space-between` style to the wrapper row container.
+
+<Canvas>
+    <Row className="v-justify">
+        <Button variant="secondary" kind="elevated" size="big">
+            click me
+        </Button>
+        <VerticalSpacer n={3} />
+        <Button variant="secondary" kind="elevated" size="medium">
+            click me
+        </Button>
+    </Row>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Row, Button, VerticalSpacer } from '@cred/neopop-web/lib/components';
+
+const BoxRow = () => {
+    return (
+        <Row className="v-justify">
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <VerticalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Row>
+    );
+};
+
+export default BoxRow;
+```
+
+##### h-center
+
+It adds `align-items: center` style to the wrapper row container.
+
+<Canvas>
+    <Row className="h-center">
+        <Button variant="secondary" kind="elevated" size="big">
+            click me
+        </Button>
+        <VerticalSpacer n={3} />
+        <Button variant="secondary" kind="elevated" size="medium">
+            click me
+        </Button>
+    </Row>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Row, Button, VerticalSpacer } from '@cred/neopop-web/lib/components';
+
+const BoxRow = () => {
+    return (
+        <Row className="h-center">
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <VerticalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Row>
+    );
+};
+
+export default BoxRow;
+```
+
+##### v-center
+
+It adds `justify-content: center` style to the wrapper row container.
+
+<Canvas>
+    <Row className="v-center">
+        <Button variant="secondary" kind="elevated" size="big">
+            click me
+        </Button>
+        <VerticalSpacer n={3} />
+        <Button variant="secondary" kind="elevated" size="medium">
+            click me
+        </Button>
+    </Row>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Row, Button, VerticalSpacer } from '@cred/neopop-web/lib/components';
+
+const BoxRow = () => {
+    return (
+        <Row className="v-center">
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <VerticalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Row>
+    );
+};
+
+export default BoxRow;
+```
+
+### Column
+
+Easiest way to create columns. It uses flex under the hood. It comes with `h-center`, & `v-center` pre-defined classes that makes the component more flexible.
+
+export const ColumnTemplate = (args) => {
+    return (
+        <Column {...args}>
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <HorizontalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Column>
+    );
+};
+
+<Canvas>
+    <Story name="Column" args={{}}>
+        {ColumnTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Column, Button, HorizontalSpacer } from '@cred/neopop-web/lib/components';
+
+const BoxColumn = () => {
+    return (
+        <Column>
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <HorizontalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Column>
+    );
+};
+
+export default BoxColumn;
+```
+
+#### Variants
+
+##### v-center
+
+It adds `align-items: center` style to the wrapper column container.
+
+<Canvas>
+    <Column className="v-center">
+        <Button variant="secondary" kind="elevated" size="big">
+            click me
+        </Button>
+        <HorizontalSpacer n={3} />
+        <Button variant="secondary" kind="elevated" size="medium">
+            click me
+        </Button>
+    </Column>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Column, Button, HorizontalSpacer } from '@cred/neopop-web/lib/components';
+
+const BoxColumn = () => {
+    return (
+        <Column className="v-center">
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <HorizontalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Column>
+    );
+};
+
+export default BoxColumn;
+```
+
+##### h-center
+
+It adds `justify-content: center` style to the wrapper column container.
+
+<Canvas>
+    <Column className="h-center">
+        <Button variant="secondary" kind="elevated" size="big">
+            click me
+        </Button>
+        <HorizontalSpacer n={3} />
+        <Button variant="secondary" kind="elevated" size="medium">
+            click me
+        </Button>
+    </Column>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Column, Button, HorizontalSpacer } from '@cred/neopop-web/lib/components';
+
+const BoxColumn = () => {
+    return (
+        <Column className="h-center">
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <HorizontalSpacer n={3} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Column>
+    );
+};
+
+export default BoxColumn;
+```
+
+### HorizontalDivider
+
+Use this component to display a divider. `rgba(255, 255, 255, 0.1)` is the default color.
+
+export const Divider = (args) => {
+    return <HorizontalDivider {...args} />;
+};
+
+<Canvas>
+    <Story name="HorizontalDivider" args={{ color: colorPalette.popBlack[100] }}>
+        {Divider.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { HorizontalDivider } from '@cred/neopop-web/lib/components';
+import { colorPalette } from '@cred/neopop-web/lib/primitives';
+
+const Divider = () => {
+    return <HorizontalDivider color={colorPalette.popBlack[100]} />;
+};
+
+export default Divider;
+```
+
+**Props**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop    | description   | type     | default                    |
+| ------- | ------------- | -------- | -------------------------- |
+| `color` | divider color | `string` | `rgba(255, 255, 255, 0.1)` |
+
+</div>
+
+## Spacing
+
+### HorizontalSpacer
+
+All the paddings and margins in neopop-web are multiples of 5. Use HorizontalSpacer component by specifying `n` to give `(5*n)px` margin horizontally.
+
+<Canvas>
+    <Column>
+        <Button variant="secondary" kind="elevated" size="big">
+            click me
+        </Button>
+        <HorizontalSpacer n={5} />
+        <Button variant="secondary" kind="elevated" size="medium">
+            click me
+        </Button>
+    </Column>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Column, HorizontalSpacer, Button } from '@cred/neopop-web/lib/components';
+
+const ColumnItem = () => {
+    return (
+        <Column>
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <HorizontalSpacer n={5} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Column>
+    );
+};
+
+export default ColumnItem;
+```
+
+**Props**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop  | description        | type   |
+| ----- | ------------------ | ------ |
+| `n*`  | padding multiplier | number |
+
+</div>
+
+### VerticalSpacer
+
+All the paddings and margins in neopop-web are multiples of 5. Use VerticalSpacer component by specifying `n` to give `(5*n)px` margin vertically.
+
+<Canvas>
+    <Row>
+        <Button variant="secondary" kind="elevated" size="big">
+            click me
+        </Button>
+        <VerticalSpacer n={4} />
+        <Button variant="secondary" kind="elevated" size="medium">
+            click me
+        </Button>
+    </Row>
+</Canvas>
+
+```jsx
+import React from 'react';
+import { Row, VerticalSpacer, Button } from '@cred/neopop-web/lib/components';
+
+const RowItem = () => {
+    return (
+        <Row>
+            <Button variant="secondary" kind="elevated" size="big">
+                click me
+            </Button>
+            <VerticalSpacer n={4} />
+            <Button variant="secondary" kind="elevated" size="medium">
+                click me
+            </Button>
+        </Row>
+    );
+};
+
+export default RowItem;
+```
+
+**Props**
+
+<div style={{overflowX: 'auto'}}>
+
+| prop  | description        | type   |
+| ----- | ------------------ | ------ |
+| `n*`  | padding multiplier | number |
+
+</div>

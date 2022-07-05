@@ -1,0 +1,162 @@
+{
+    "name": "@cred/neopop-web",
+    "version": "1.0.0",
+    "description": "NeoPOP components library by CRED",
+    "main": "lib/index.js",
+    "module": "lib-esm/index.js",
+    "typings": "lib/index.d.ts",
+    "scripts": {
+        "build": "./scripts/build",
+        "storybook": "start-storybook -p 6006 -s ./.storybook/images",
+        "build:storybook": "build-storybook -s ./.storybook/images",
+        "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet --fix",
+        "prepare": "husky install",
+        "pretty": "prettier --write src/**/*.{ts,tsx}"
+    },
+    "exports": {
+        ".": {
+            "node": "./lib/index.js",
+            "require": "./lib/index.js",
+            "default": "./lib-esm/index.js"
+        },
+        "./lib/components": {
+            "node": "./lib/components/index.js",
+            "require": "./lib/components/index.js",
+            "default": "./lib-esm/components/index.js"
+        },
+        "./lib/primitives": {
+            "node": "./lib/primitives/index.js",
+            "require": "./lib/primitives/index.js",
+            "default": "./lib-esm/primitives/index.js"
+        },
+        "./lib/utils": {
+            "node": "./lib/utils/index.js",
+            "require": "./lib/utils/index.js",
+            "default": "./lib-esm/utils/index.js"
+        },
+        "./lib/hooks": {
+            "node": "./lib/hooks/index.js",
+            "require": "./lib/hooks/index.js",
+            "default": "./lib-esm/hooks/index.js"
+        },
+        "./lib/*": {
+            "node": [
+                "./lib/*.js",
+                "./lib/*/index.js",
+                "./lib/**/*"
+            ],
+            "default": [
+                "./lib-esm/*.js",
+                "./lib-esm/*/index.js",
+                "./lib-esm/**/index.js"
+            ]
+        },
+        "./lib-esm/*": {
+            "node": [
+                "./lib/*.js",
+                "./lib/*/index.js",
+                "./lib/**/*"
+            ],
+            "default": [
+                "./lib-esm/*.js",
+                "./lib-esm/*/index.js",
+                "./lib-esm/**/index.js"
+            ]
+        }
+    },
+    "files": [
+        "lib",
+        "lib-esm"
+    ],
+    "author": "webdev@cred.club",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@react-spring/web": "^9.4.4",
+        "@use-gesture/react": "^10.2.11",
+        "react-portal": "^4.2.2"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.17.6",
+        "@babel/core": "^7.17.9",
+        "@babel/eslint-parser": "^7.17.0",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.7",
+        "@babel/plugin-proposal-optional-chaining": "^7.16.7",
+        "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/preset-react": "^7.16.7",
+        "@babel/preset-typescript": "^7.16.7",
+        "@rollup/plugin-alias": "^3.1.9",
+        "@rollup/plugin-babel": "^5.3.1",
+        "@rollup/plugin-commonjs": "^22.0.0",
+        "@rollup/plugin-node-resolve": "^13.2.1",
+        "@rollup/plugin-typescript": "^8.3.2",
+        "@storybook/addon-actions": "^6.5.5",
+        "@storybook/addon-docs": "^6.5.5",
+        "@storybook/addon-essentials": "^6.5.5",
+        "@storybook/addon-links": "^6.5.5",
+        "@storybook/react": "^6.5.5",
+        "@types/react": "^18.0.8",
+        "@types/react-portal": "^4.0.4",
+        "@types/styled-components": "^5.1.25",
+        "@typescript-eslint/eslint-plugin": "^5.21.0",
+        "@typescript-eslint/parser": "^5.21.0",
+        "babel-loader": "^8.2.5",
+        "babel-plugin-add-react-displayname": "0.0.5",
+        "babel-plugin-macros": "3.1.0",
+        "babel-plugin-preval": "^5.1.0",
+        "babel-plugin-styled-components": "^2.0.7",
+        "babel-plugin-transform-replace-expressions": "0.2.0",
+        "babel-polyfill": "6.26.0",
+        "eslint": "^8.14.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-import-resolver-typescript": "^2.7.1",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.29.4",
+        "eslint-plugin-react-hooks": "^4.5.0",
+        "eslint-plugin-storybook": "^0.5.12",
+        "husky": ">=6",
+        "lint-staged": "^12.4.1",
+        "postcss": "^8.4.12",
+        "prettier": "^2.6.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "rollup": "^2.70.2",
+        "rollup-plugin-babel": "4.4.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-svg": "^2.0.0",
+        "rollup-plugin-terser": "7.0.2",
+        "rollup-plugin-visualizer": "^5.6.0",
+        "styled-components": "^5.3.5",
+        "typescript": "^4.6.3"
+    },
+    "peerDependencies": {
+        "react": "^17.0.2 || ^18.0.0",
+        "react-dom": "^17.0.2 || ^18.0.0",
+        "styled-components": "^5.3.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx,css}": [
+            "prettier --write",
+            "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet --fix"
+        ]
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CRED-CLUB/neopop-web.git"
+    },
+    "bugs": {
+        "url": "https://github.com/CRED-CLUB/neopop-web/issues"
+    },
+    "homepage": "https://github.com/CRED-CLUB/neopop-web#readme"
+}

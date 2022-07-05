@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# Build directory
+dist/
+lib/
+lib-esm/
+
+# Logs
+*.log
+npm-debug.log*
+
+#macOS custom attributes
+.DS_Store
+*/.DS_Store

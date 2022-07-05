@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+
+# Build directory
+lib/
+lib-esm/
+dist/
+storybook-static/
+
+# Logs
+*.log
+npm-debug.log*
+
+#macOS custom attributes
+.DS_Store
+*/.DS_Store
+
+#editor configs
+.vscode

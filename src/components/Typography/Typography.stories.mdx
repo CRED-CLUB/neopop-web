@@ -1,0 +1,662 @@
+import styled from 'styled-components';
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import FontVariantTut from './assets/FontVariant.png';
+import { FontOverflowType, FontType, FontWeights } from './types';
+import { Row, HorizontalSpacer, VerticalSpacer, HorizontalDivider, Typography } from '@components';
+import { colorPalette, mainColors, FontVariant } from '@primitives';
+import { GlobalFonts } from './TypographySystem/global';
+import { hexToRGBA } from '@utils';
+
+<Meta
+    title="Foundation/Typography"
+    component={Typography}
+    argTypes={{
+        color: {
+            control: { type: 'color' },
+        },
+    }}
+/>
+
+export const System = () => {
+    const PageContainer = styled.div`
+        padding-bottom: 30px;
+        .gilroy {
+            font-family: 'Gilroy', 'Trebuchet MS', Helvetica, sans-serif;
+        }
+        .cirka {
+            font-family: 'Cirka', 'Times New Roman', Times, serif;
+        }
+    `;
+    const CONFIGS = [
+        {
+            title: 'Body',
+            items: [
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 11,
+                    fontWeight: FontWeights.REGULAR,
+                    color: '#000000',
+                    children: 'gilroy body regular 11',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 12,
+                    fontWeight: FontWeights.REGULAR,
+                    color: '#000000',
+                    children: 'gilroy body regular 12',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 13,
+                    fontWeight: FontWeights.REGULAR,
+                    color: '#000000',
+                    children: 'gilroy body regular 13',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 14,
+                    fontWeight: FontWeights.REGULAR,
+                    color: '#000000',
+                    children: 'gilroy body regular 14',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 15,
+                    fontWeight: FontWeights.REGULAR,
+                    color: '#000000',
+                    children: 'gilroy body regular 15',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 16,
+                    fontWeight: FontWeights.REGULAR,
+                    color: '#000000',
+                    children: 'gilroy body regular 16',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 11,
+                    fontWeight: FontWeights.MEDIUM,
+                    color: '#000000',
+                    children: 'gilroy body medium 11',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 12,
+                    fontWeight: FontWeights.MEDIUM,
+                    color: '#000000',
+                    children: 'gilroy body medium 12',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 13,
+                    fontWeight: FontWeights.MEDIUM,
+                    color: '#000000',
+                    children: 'gilroy body medium 13',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 14,
+                    fontWeight: FontWeights.MEDIUM,
+                    color: '#000000',
+                    children: 'gilroy body medium 14',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 15,
+                    fontWeight: FontWeights.MEDIUM,
+                    color: '#000000',
+                    children: 'gilroy body medium 15',
+                },
+                {
+                    fontType: FontType.BODY,
+                    fontSize: 16,
+                    fontWeight: FontWeights.MEDIUM,
+                    color: '#000000',
+                    children: 'gilroy body medium 16',
+                },
+            ],
+        },
+        {
+            title: 'Caps',
+            items: [
+                {
+                    fontType: FontType.CAPS,
+                    fontSize: 10,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy caps extra bold 10',
+                },
+                {
+                    fontType: FontType.CAPS,
+                    fontSize: 12,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy caps extra bold 12',
+                },
+                {
+                    fontType: FontType.CAPS,
+                    fontSize: 10,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy caps bold 10',
+                },
+                {
+                    fontType: FontType.CAPS,
+                    fontSize: 12,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy caps bold 12',
+                },
+                {
+                    fontType: FontType.CAPS,
+                    fontSize: 10,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy caps semi bold 10',
+                },
+                {
+                    fontType: FontType.CAPS,
+                    fontSize: 12,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy caps semi bold 12',
+                },
+            ],
+        },
+        {
+            title: 'Serif Heading',
+            items: [
+                {
+                    fontType: FontType.SERIF_HEADING,
+                    fontSize: 18,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'cirka heading bold 18',
+                },
+                {
+                    fontType: FontType.SERIF_HEADING,
+                    fontSize: 20,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'cirka heading bold 20',
+                },
+                {
+                    fontType: FontType.SERIF_HEADING,
+                    fontSize: 22,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'cirka heading bold 22',
+                },
+                {
+                    fontType: FontType.SERIF_HEADING,
+                    fontSize: 24,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'cirka heading bold 24',
+                },
+            ],
+        },
+        {
+            title: 'Heading',
+            items: [
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 13,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading semi bold 13',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 14,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading semi bold 14',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 16,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading semi bold 16',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 18,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading semi bold 18',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 20,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading semi bold 20',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 22,
+                    fontWeight: FontWeights.SEMI_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading semi bold 22',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 13,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading bold 13',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 14,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading bold 14',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 16,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading bold 16',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 18,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading bold 18',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 20,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading bold 20',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 22,
+                    fontWeight: FontWeights.BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading bold 22',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 13,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 13',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 14,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 14',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 15,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 15',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 16,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 16',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 18,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 18',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 20,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 20',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 22,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 22',
+                },
+                {
+                    fontType: FontType.HEADING,
+                    fontSize: 44,
+                    fontWeight: FontWeights.EXTRA_BOLD,
+                    color: '#000000',
+                    children: 'gilroy heading extra bold 44',
+                },
+            ],
+        },
+    ];
+    return (
+        <>
+            <GlobalFonts />
+            <PageContainer>
+                {CONFIGS.map((config, index) => (
+                    <div style={{ minWidth: '33%' }} key={`typography-${index * 1}`}>
+                        <div className="cirka">
+                            <Typography
+                                {...FontVariant.HeadingBold22}
+                                color={colorPalette.popBlack[400]}
+                            >
+                                {config.title}
+                            </Typography>
+                            <HorizontalDivider color={hexToRGBA(colorPalette.popBlack[100], 0.1)} />
+                            <HorizontalSpacer n={2} />
+                        </div>
+                        <div
+                            style={{
+                                width: '100%',
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(2, 1fr)',
+                                gridColumnGap: '10px',
+                            }}
+                        >
+                            {config.items.map((item, ind) => (
+                                <div
+                                    className={
+                                        item.fontType === FontType.SERIF_HEADING
+                                            ? 'cirka'
+                                            : 'gilroy'
+                                    }
+                                >
+                                    <Typography {...item} />
+                                </div>
+                            ))}
+                        </div>
+                        <HorizontalSpacer n={5} />
+                    </div>
+                ))}
+            </PageContainer>
+        </>
+    );
+};
+
+# Typography
+
+Text wrapper that supports headings, serif-heading, caps, body, overflow, & overflow with ellipsis.
+
+export const TypoTemplate = (args) => {
+    return <Typography {...args} />;
+};
+
+## How to use?
+
+1. Import `Typography` component from neopop-web.
+
+```jsx
+import { Typography } from '@cred/neopop-web/lib/components';
+```
+
+2. Import `FontVariant` primitive. It is a config that provides fontType, fontSize & fontWeight as per the design system. You can select the style as per this convention:
+
+    <br />
+    <img src={FontVariantTut} width="350" />
+    <br />
+
+```jsx
+import { FontVariant } from '@cred/neopop-web/lib/primitives';
+
+<Typography {...FontVariant.HeadingBold14}>neoPOP</Typography>;
+```
+
+3. Import colorPalette/colorGuide/mainColors primitive to assign text color as per the design system.
+   NOTE: default `color` prop value is #FFFFFF
+
+```jsx
+import { colorPalette, FontVariant } from '@cred/neopop-web/lib/primitives';
+
+<Typography {...FontVariant.HeadingBold14} color={colorPalette.popBlack[500]}>
+    neoPOP
+</Typography>;
+```
+
+🎉 You are all set!
+
+## Variants
+
+Here's what you can acheive from Typography component. No need to worry about line-height or line-spacing, Typography component handles it for you.
+
+##### Heading
+
+<Canvas>
+    <Story
+        name="Heading"
+        args={{
+            ...FontVariant.HeadingSemiBold16,
+            color: mainColors.yellow,
+            children: 'rewards for paying credit card bills.',
+        }}
+    >
+        {TypoTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Typography } from '@cred/neopop-web/lib/components';
+import { colorPalette, FontVariant } from '@cred/neopop-web/lib/primitives';
+
+const Heading = () => {
+    return (
+        <Typography {...FontVariant.HeadingSemiBold16} color={mainColors.yellow}>
+            rewards for paying credit card bills.
+        </Typography>
+    );
+};
+
+export default Heading;
+```
+
+##### Serif Heading
+
+<Canvas>
+    <Story
+        name="Serif Heading"
+        args={{
+            ...FontVariant.CirkaHeadingBold20,
+            color: mainColors.yellow,
+            children: 'rewards for paying credit card bills.',
+        }}
+    >
+        {TypoTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Typography } from '@cred/neopop-web/lib/components';
+import { colorPalette, FontVariant } from '@cred/neopop-web/lib/primitives';
+
+const SerifHeading = () => {
+    return (
+        <Typography {...FontVariant.CirkaHeadingBold20} color={mainColors.yellow}>
+            rewards for paying credit card bills.
+        </Typography>
+    );
+};
+
+export default SerifHeading;
+```
+
+##### Caps
+
+<Canvas>
+    <Story
+        name="Caps"
+        args={{
+            ...FontVariant.CapsBold10,
+            color: mainColors.yellow,
+            children: 'rewards for paying credit card bills.',
+        }}
+    >
+        {TypoTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Typography } from '@cred/neopop-web/lib/components';
+import { colorPalette, FontVariant } from '@cred/neopop-web/lib/primitives';
+
+const Caps = () => {
+    return (
+        <Typography {...FontVariant.CapsBold10} color={mainColors.yellow}>
+            rewards for paying credit card bills.
+        </Typography>
+    );
+};
+
+export default Caps;
+```
+
+##### Body
+
+<Canvas>
+    <Story
+        name="Body"
+        args={{
+            ...FontVariant.BodyRegular16,
+            color: mainColors.yellow,
+            children: 'rewards for paying credit card bills.',
+        }}
+    >
+        {TypoTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Typography } from '@cred/neopop-web/lib/components';
+import { colorPalette, FontVariant } from '@cred/neopop-web/lib/primitives';
+
+const Body = () => {
+    return (
+        <Typography {...FontVariant.BodyRegular16} color={mainColors.yellow}>
+            rewards for paying credit card bills.
+        </Typography>
+    );
+};
+
+export default Body;
+```
+
+##### Overflow
+
+<Canvas>
+    <Story
+        name="Overflow"
+        args={{
+            ...FontVariant.BodyRegular16,
+            color: mainColors.yellow,
+            children: 'rewards for paying credit card bills.',
+            overflow: FontOverflowType.ELLIPSIS,
+            style: { width: '75px' },
+        }}
+    >
+        {TypoTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Typography } from '@cred/neopop-web/lib/components';
+import { colorPalette, FontVariant, FontOverflowType } from '@cred/neopop-web/lib/primitives';
+
+const Overflow = () => {
+    return (
+        <Typography
+            {...FontVariant.BodyRegular16}
+            color={mainColors.yellow}
+            overflow={FontOverflowType.ELLIPSIS}
+            style={{ width: '75px' }}
+        >
+            rewards for paying credit card bills.
+        </Typography>
+    );
+};
+
+export default Overflow;
+```
+
+##### Overflow with clamp
+
+<Canvas>
+    <Story
+        name="Overflow with clamp"
+        args={{
+            ...FontVariant.BodyRegular16,
+            color: mainColors.yellow,
+            children: 'rewards for paying credit card bills.',
+            overflow: FontOverflowType.ELLIPSIS,
+            lineClamp: 2,
+            style: { width: '100px' },
+        }}
+    >
+        {TypoTemplate.bind({})}
+    </Story>
+</Canvas>
+
+```jsx
+import React, { useState } from 'react';
+import { Typography } from '@cred/neopop-web/lib/components';
+import { colorPalette, FontVariant, FontOverflowType } from '@cred/neopop-web/lib/primitives';
+
+const OverflowWithClamp = () => {
+    return (
+        <Typography
+            {...FontVariant.BodyRegular16}
+            color={mainColors.yellow}
+            overflow={FontOverflowType.ELLIPSIS}
+            lineClamp={2}
+            style={{ width: '100px' }}
+        >
+            rewards for paying credit card bills.
+        </Typography>
+    );
+};
+
+export default OverflowWithClamp;
+```
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop            | description                                               | type                                       |
+| --------------- | --------------------------------------------------------- | ------------------------------------------ |
+| `fontType` \*   | typography variant                                        | `heading`, `caps`, `body`, `serif-heading` |
+| `children` \*   | text content                                              | `ReactNode`                                |
+| `color`         | text color                                                | `string`                                   |
+| `fontWeight` \* | font weight                                               | `800`, `700`, `600`, `500`, `400`, `300`   |
+| `fontSize` \*   | font size                                                 | `string`                                   |
+| `style`         | CSS styles                                                | `CSSStyles`                                |
+| `overflow`      | text overflow                                             | `ellipsis`, `clip`                         |
+| `lineClamp`     | line-clamp to truncate text at a specific number of lines | `number`                                   |
+| `as`            | as paragraph/span                                         | `paragraph`, `span`                        |
+
+</div>
+
+## StyleGuide
+
+<System />
+
+## Scope of Improvements
+
+1. `className` prop support to reduce extra wrapper need.
+2. `dangerouslySetInnerHTML` prop support to reduce extra wrapper need.
