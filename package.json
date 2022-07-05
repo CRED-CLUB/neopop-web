@@ -151,6 +151,14 @@
     "directories": {
         "lib": "lib"
     },
+    "keywords": [
+        "neopop",
+        "design system",
+        "design",
+        "react",
+        "web",
+        "cred"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/CRED-CLUB/neopop-web.git"
