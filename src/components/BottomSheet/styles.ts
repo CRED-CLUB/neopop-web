@@ -3,7 +3,7 @@ import { animated } from '@react-spring/web';
 import { hexToRGBA } from '../../utils';
 import { colorPalette, mainColors } from '../../primitives';
 
-export const Wraper = styled.div`
+export const Wrapper = styled.div`
     position: relative;
     z-index: 101;
 `;
