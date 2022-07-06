@@ -9,10 +9,10 @@ import { ButtonProps } from '../types';
 
 const FlatButton = (props: ButtonProps) => {
     const {
-        variant,
-        colorMode,
-        kind,
-        size,
+        variant = 'primary',
+        colorMode = 'dark',
+        kind = 'flat',
+        size = 'medium',
         textStyle,
         colorConfig,
         spacingConfig,
@@ -20,11 +20,12 @@ const FlatButton = (props: ButtonProps) => {
         onTouchStart = () => {},
         ...propsToFwd
     } = props;
-    const spacing = spacingConfig ?? getSpacingConfig(size ?? 'medium');
-    const colors =
-        colorConfig ?? getButtonColors(colorMode ?? 'dark', variant ?? 'primary', kind ?? 'flat');
-    const customTextStyle = textStyle ?? getTextStyle(size ?? 'medium') ?? fontNameSpaces.th14b;
-    const textColor = propsToFwd.disabled ? colors?.disabledColors?.color : colors?.color;
+    const spacing = spacingConfig ?? getSpacingConfig(size);
+    const colors = colorConfig ?? getButtonColors(colorMode, variant, kind);
+    const customTextStyle = textStyle ?? getTextStyle(size) ?? fontNameSpaces.th14b;
+    const textColor = propsToFwd.disabled
+        ? colors?.disabledColors?.color
+        : colors?.color;
 
     return (
         <ButtonWrapper
@@ -36,7 +37,14 @@ const FlatButton = (props: ButtonProps) => {
             {...propsToFwd}
         >
             <div className="button-face">
-                {propsToFwd.icon ? <img src={propsToFwd.icon} className="icon" alt="icon" /> : null}
+                {propsToFwd.icon
+                    ? <img
+                        src={propsToFwd.icon}
+                        className="icon"
+                        alt="icon"
+                    />
+                    : null
+                }
                 <Typography
                     fontSize={customTextStyle?.fontSize}
                     fontType={customTextStyle?.fontType}
@@ -45,9 +53,13 @@ const FlatButton = (props: ButtonProps) => {
                 >
                     {children}
                 </Typography>
-                {propsToFwd.showArrow ? (
-                    <Pointer style={{ marginLeft: '10px' }} color={textColor} />
-                ) : null}
+                {propsToFwd.showArrow
+                    ? <Pointer
+                        style={{ marginLeft: '10px' }}
+                        color={textColor}
+                    />
+                    : null
+                }
             </div>
             <div className="button-edge left" />
             <div className="button-edge top" />

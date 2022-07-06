@@ -9,8 +9,8 @@ interface Prop extends Omit<BottomSheetProp, 'onCloseEnd'> {
 }
 
 export const useBottomSheet = ({
-    onAfterClose,
     open,
+    onAfterClose,
 }: {
     open: boolean;
     onAfterClose?: () => void;
