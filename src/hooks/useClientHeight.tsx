@@ -16,7 +16,7 @@ function useClientHeight<A extends HTMLElement>(): [{ ref: MutableRefObject<A> }
 
         return () => {
             window.removeEventListener('resize', handleResize);
-            ref.current?.addEventListener('resize', handleResize);
+            ref.current?.removeEventListener('resize', handleResize);
         };
     }, []);
 
