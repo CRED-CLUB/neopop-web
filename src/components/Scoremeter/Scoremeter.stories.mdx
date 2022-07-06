@@ -10,7 +10,7 @@ export const DarkScoreMeterTemplate = (args) => (
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            paadding: '50px',
+            padding: '50px',
         }}
     >
         <ScoreMeter {...args} />
@@ -73,7 +73,7 @@ ScoreMeter component can be used as a visual representation of any measurable an
 
 -   Pass the required Props
 -   Use `colorMode` prop to change the color mode - `"dark"` or `"light"`
--   Use `type` prop to change the colors based on rating `"excellent"`, `"avergae"`, or `"poor"`
+-   Use `type` prop to change the colors based on rating `"excellent"`, `"average"`, or `"poor"`
 -   `colorConfig` will override the default config (calculated based on `colorMode` and `type`)
 
 ```jsx
@@ -168,7 +168,7 @@ export default ScoreMeterExample;
 | ------------ | ---------------------------------- | ------ |
 | `excellent*` | Color when the rating is excellent | string |
 | `average*`   | Color when the rating is average   | string |
-| `poort*`     | Color when the rating is poor      | string |
+| `poor*`     | Color when the rating is poor      | string |
 
 
 </div>

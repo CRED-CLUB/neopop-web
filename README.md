@@ -6,7 +6,7 @@
 <br>
 <div align="center">
     <a href="https://github.com/CRED-CLUB/neopop-web/blob/main/LICENSE">
-        <img src="https://badgen.net/github/license/cred-club/neopop-web" alt="Licence">
+        <img src="https://badgen.net/github/license/cred-club/neopop-web" alt="License">
     </a>
     <a href="https://twitter.com/cred_club">
         <img src="https://img.shields.io/twitter/follow/cred_club?label=Twitter&style=flat&logo=twitter&color=1DA1F2" alt="CRED Twitter">
