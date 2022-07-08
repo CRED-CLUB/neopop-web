@@ -7,7 +7,7 @@ export interface SpinnerProps {
     id?: string;
     className?: string;
     children?: React.ReactNode;
-    spinningContent?: boolean;
+    spinningChildren?: boolean;
     childrenId?: string;
     childrenClassName?: string;
 }

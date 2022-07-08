@@ -1,18 +1,21 @@
 import React from 'react';
 import { Container, ContentContainer } from './styles';
 import { SpinnerProps } from './types';
+import { colorPalette } from '@primitives';
 
 const Spinner = ({
-    spinningContent = true,
+    size = '50px',
+    spinningChildren = true,
+    color = colorPalette.info[500],
     childrenId,
     childrenClassName,
     ...props
 }: SpinnerProps) => (
-    <Container {...props}>
+    <Container size={size} color={color} {...props}>
         <ContentContainer
             id={childrenId}
             className={childrenClassName}
-            spinningContent={spinningContent}
+            spinningChildren={spinningChildren}
         >
             {props.children}
         </ContentContainer>

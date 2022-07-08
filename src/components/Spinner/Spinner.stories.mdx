@@ -3,6 +3,35 @@ import Spinner from '.';
 
 <Meta title="Components/Spinner" component={Spinner} />
 
+# Spinner
+
+Spinner provides opportunity to show the loading status of your application.
+
+## Usage
+
+```jsx
+// React
+import React, { Suspense } from 'react';
+
+//Components
+const LargeComponent = React.lazy(() =>
+    import('components/LargeComponent/LargeComponent.component'),
+);
+
+import { Spinner } from '@cred/neopop-web/lib/components';
+
+// Main Component
+function App() {
+    return (
+        <Suspense fallback={<Spinner />}>
+            <LargeComponent />
+        </Suspense>
+    );
+}
+
+export default App;
+```
+
 ## Variants
 
 <Canvas>
@@ -11,18 +40,41 @@ import Spinner from '.';
     </Story>
 </Canvas>
 
-### Given size
+### With custom color and size
 
 <Canvas>
-    <Story name="Spinner with given size">
-        <Spinner size="70px" />
+    <Story name="Custom spinner">
+        <Spinner color="red" size="70px" />
     </Story>
 </Canvas>
 
-### Given color
+### With children
 
 <Canvas>
-    <Story name="Spinner with given color">
-        <Spinner color="red" children="ss" />
+    <Story name="Spinner with children">
+        <Spinner color="rgba(156,200,245)" spinningChildren={false}>
+            <a style={{ color: '#999999' }}>50%</a>
+        </Spinner>
     </Story>
 </Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop                | description                      | type                             |
+| ------------------- | -------------------------------- | -------------------------------- |
+| size\*              | specifies the size               | `string`                         |
+| color\*             | color of spinner                 | `string`                         |
+| style\*             | general styles for spinner       | `object` - `React.CSSProperties` |
+| children\*          | element located inside spinner   | `React.ReactNode`                |
+| className\*         | className for spinner            | `string`                         |
+| id\*                | id for spinner                   | `string`                         |
+| childrenId\*        | id for spinner's children        | `string`                         |
+| childrenClassName\* | className for spinner's children | `string`                         |
+
+</div>
+
+`spinningChildren` - `true`by default. If`true`- content is spinning with spinner. If`false` content does not spin. <br/>
+`color` - `colorPalette.info.500` by default.
+`size` - `50px` by default.

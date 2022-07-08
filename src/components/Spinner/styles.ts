@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import { SpinnerProps } from './types';
-import { mainColors } from '@primitives';
 
 export const Container = styled.div<SpinnerProps>`
-    border: ${(props) => (props.size ? `calc(${props.size} * 8 / 100)` : '4px')} solid transparent;
-    border-top: ${(props) => (props.size ? `calc(${props.size} * 8 / 100)` : '4px')} solid
-        ${(props) => props.color || mainColors.blue};
+    border: ${(props) => `calc(${props.size} * 8 / 100)`} solid transparent;
+    border-top: ${(props) => `calc(${props.size} * 8 / 100)`} solid ${(props) => props.color};
     border-radius: 50%;
-    width: ${(props) => props.size || '50px'};
-    height: ${(props) => props.size || '50px'};
+    width: ${(props) => props.size};
+    height: ${(props) => props.size};
     animation: spin 2s linear infinite;
     display: flex;
     align-items: center;
@@ -25,8 +23,8 @@ export const Container = styled.div<SpinnerProps>`
     }
 `;
 
-export const ContentContainer = styled.div<{ spinningContent: boolean }>`
-    animation: ${(props) => !props.spinningContent && 'reverse-spin 2s linear infinite'};
+export const ContentContainer = styled.div<{ spinningChildren: boolean }>`
+    animation: ${(props) => !props.spinningChildren && 'reverse-spin 2s linear infinite'};
     @keyframes reverse-spin {
         0% {
             transform: rotate(0deg);
