@@ -1,7 +1,14 @@
 import { Meta, ColorPalette, ColorItem, ArgsTable, Story, Canvas } from '@storybook/addon-docs';
 import Spinner from '.';
+import StorybookWrapper from './components/StorybookWrapper.component';
 
 <Meta title="Components/Spinner" component={Spinner} />
+
+export const StorybookSpinner = (args) => (
+    <StorybookWrapper>
+        <Spinner {...args} />
+    </StorybookWrapper>
+);
 
 # Spinner
 
@@ -36,7 +43,7 @@ export default App;
 
 <Canvas>
     <Story name="Spinner" args={{ children: '' }}>
-        {Spinner.bind({})}
+        {StorybookSpinner.bind({})}
     </Story>
 </Canvas>
 
@@ -44,7 +51,7 @@ export default App;
 
 <Canvas>
     <Story name="Custom spinner" args={{ color: 'red', size: '70px' }}>
-        {Spinner.bind({})}
+        {StorybookSpinner.bind({})}
     </Story>
 </Canvas>
 
@@ -52,9 +59,15 @@ export default App;
 
 <Canvas>
     <Story name="Spinner with children">
-        <Spinner color="rgba(156,200,245)" spinningChildren={false} style={{ cursor: 'pointer' }}>
-            <a style={{ color: '#999999', userSelect: 'none' }}>50%</a>
-        </Spinner>
+        <StorybookWrapper>
+            <Spinner
+                color="rgba(156,200,245)"
+                spinningChildren={false}
+                style={{ cursor: 'pointer' }}
+            >
+                <a style={{ color: '#999999', userSelect: 'none' }}>50%</a>
+            </Spinner>
+        </StorybookWrapper>
     </Story>
 </Canvas>
 
