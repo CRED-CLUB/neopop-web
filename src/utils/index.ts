@@ -11,7 +11,11 @@ export const hexToRGBA = (hex: string, alpha: string | number) => {
 };
 
 export const isEmpty = (value: any) =>
-    value === undefined || value === null || value === '' || value === {} || value === [];
+    value === undefined ||
+    value === null ||
+    (typeof value === 'string' && value.trim() === '') ||
+    (Array.isArray(value) && value.length === 0) ||
+    (typeof value === 'object' && Object.keys(value).length === 0);
 
 const Currencies: { [key: string]: any } = {
     dollar: {
