@@ -42,7 +42,7 @@ export const inputWarningArgTypes = {
     },
 };
 
-export const disabledPropsInControl = {
+export const argTypes = {
     inputRef: { table: { disable: true } },
 };
 
@@ -74,7 +74,7 @@ export default InputFieldExample;
 ## Variants
 
 <Canvas>
-    <Story name="InputField" args={{ ...inputArgTypes }} argTypes={disabledPropsInControl}>
+    <Story name="InputField" args={{ ...inputArgTypes }} argTypes={argTypes}>
         {InputFieldTemplate.bind({})}
     </Story>
 </Canvas>
@@ -82,11 +82,7 @@ export default InputFieldExample;
 ### With Error Message
 
 <Canvas>
-    <Story
-        name="InputWarningField"
-        args={{ ...inputWarningArgTypes }}
-        argTypes={disabledPropsInControl}
-    >
+    <Story name="InputWarningField" args={{ ...inputWarningArgTypes }} argTypes={argTypes}>
         {InputFieldTemplate.bind({})}
     </Story>
 </Canvas>
