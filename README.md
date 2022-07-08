@@ -18,11 +18,11 @@
     <br><br>
 </div>
 
-## what is NeoPOP?
+## What is NeoPOP?
 
 NeoPOP was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. neopop stays true to everything that design at CRED stands for.
 
-## what this library features?
+## What this library features?
 
 -   Easy to use and beautifully designed React components based on NeoPOP design system.
 -   Flexible and composable components which accepts custom configurations.
@@ -31,7 +31,7 @@ NeoPOP was created with one simple goal, to create the next generation of the ne
 
 > note: currently the components in this library are optimized for mobile views, we will soon release support for desktop views.
 
-## how to install?
+## How to install?
 
 to use NeoPOP library, all you need to do is install the `@cred/neopop-web` package and its peer dependencies:
 
@@ -43,7 +43,7 @@ yarn add @cred/neopop-web react react-dom styled-components
 npm i @cred/neopop-web react react-dom styled-components
 ```
 
-## how to use?
+## How to use?
 
 to start using the library you can,
 
@@ -78,11 +78,11 @@ export default Page;
 
 a detailed documentation and an interactive playground can be found [here](https://playground.cred.club)
 
-## contributing
+## Contributing
 
 pull requests are welcome! we'd love help improving this library. feel free to browse through open issues to look for things that need work. if you have a feature request or bug, please open a new issue so we can track it.
 
-## contributors
+## Contributors
 
 -   Chirag Mittal — [Github](https://github.com/mittalchirag) | [Linkedin](https://www.linkedin.com/in/mittalchirag/)
 -   Tripurari Shankar — [Github](https://github.com/tripurari001) | [Linkedin](https://www.linkedin.com/in/tripurari-shankar-91907189/)
@@ -91,7 +91,7 @@ pull requests are welcome! we'd love help improving this library. feel free to b
 -   Aditya Sharma — [Github](https://github.com/sharmaaditya570191) | [Linkedin](https://www.linkedin.com/in/sharmaaditya570191/)
 -   Abhishek Naidu — [Github](https://github.com/abhisheknaiidu) | [Linkedin](https://www.linkedin.com/in/abhisheknaiidu/)
 
-## license
+## License
 
 ```
 Copyright 2022 Dreamplug Technologies Private Limited.
