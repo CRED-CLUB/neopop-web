@@ -10,9 +10,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-
     name: Lint on node 12.x and ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 12.x
