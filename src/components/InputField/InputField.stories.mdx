@@ -42,6 +42,10 @@ export const inputWarningArgTypes = {
     },
 };
 
+export const disabledPropsInControl = {
+    inputRef: { table: { disable: true } },
+};
+
 An input field includes a label and a text field users can type text into.
 
 ## Usage
@@ -70,7 +74,7 @@ export default InputFieldExample;
 ## Variants
 
 <Canvas>
-    <Story name="InputField" args={{ ...inputArgTypes }}>
+    <Story name="InputField" args={{ ...inputArgTypes }} argTypes={disabledPropsInControl}>
         {InputFieldTemplate.bind({})}
     </Story>
 </Canvas>
@@ -78,7 +82,11 @@ export default InputFieldExample;
 ### With Error Message
 
 <Canvas>
-    <Story name="InputWarningField" args={{ ...inputWarningArgTypes }}>
+    <Story
+        name="InputWarningField"
+        args={{ ...inputWarningArgTypes }}
+        argTypes={disabledPropsInControl}
+    >
         {InputFieldTemplate.bind({})}
     </Story>
 </Canvas>
