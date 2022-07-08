@@ -15,7 +15,9 @@ export const isEmpty = (value: any) =>
     value === null ||
     (typeof value === 'string' && value.trim() === '') ||
     (Array.isArray(value) && value.length === 0) ||
-    (typeof value === 'object' && Object.keys(value).length === 0);
+    (value?.constructor?.name === 'Object' && Object.keys(value).length === 0) ||
+    ((value?.constructor?.name === 'Map' || value?.constructor?.name === 'Set') &&
+        value.size === 0);
 
 const Currencies: { [key: string]: any } = {
     dollar: {
