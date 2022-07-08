@@ -35,16 +35,16 @@ export default App;
 ## Variants
 
 <Canvas>
-    <Story name="Spinner">
-        <Spinner />
+    <Story name="Spinner" args={{ children: '' }}>
+        {Spinner.bind({})}
     </Story>
 </Canvas>
 
 ### With custom color and size
 
 <Canvas>
-    <Story name="Custom spinner">
-        <Spinner color="red" size="70px" />
+    <Story name="Custom spinner" args={{ color: 'red', size: '70px' }}>
+        {Spinner.bind({})}
     </Story>
 </Canvas>
 
@@ -52,8 +52,8 @@ export default App;
 
 <Canvas>
     <Story name="Spinner with children">
-        <Spinner color="rgba(156,200,245)" spinningChildren={false}>
-            <a style={{ color: '#999999' }}>50%</a>
+        <Spinner color="rgba(156,200,245)" spinningChildren={false} style={{ cursor: 'pointer' }}>
+            <a style={{ color: '#999999', userSelect: 'none' }}>50%</a>
         </Spinner>
     </Story>
 </Canvas>
@@ -76,5 +76,5 @@ export default App;
 </div>
 
 `spinningChildren` - `true`by default. If`true`- content is spinning with spinner. If`false` content does not spin. <br/>
-`color` - `colorPalette.info.500` by default.
+`color` - `colorPalette.info.500` by default.<br/>
 `size` - `50px` by default.
