@@ -4,6 +4,5 @@
     "tabWidth": 4,
     "printWidth": 100,
     "trailingComma": "all",
-    "semi": true,
-    "exclude": ["node_modules"]
+    "semi": true
 }
