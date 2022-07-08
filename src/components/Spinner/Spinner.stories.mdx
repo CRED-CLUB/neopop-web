@@ -1,0 +1,28 @@
+import { Meta, ColorPalette, ColorItem, ArgsTable, Story, Canvas } from '@storybook/addon-docs';
+import Spinner from '.';
+
+<Meta title="Components/Spinner" component={Spinner} />
+
+## Variants
+
+<Canvas>
+    <Story name="Spinner">
+        <Spinner />
+    </Story>
+</Canvas>
+
+### Given size
+
+<Canvas>
+    <Story name="Spinner with given size">
+        <Spinner size="70px" />
+    </Story>
+</Canvas>
+
+### Given color
+
+<Canvas>
+    <Story name="Spinner with given color">
+        <Spinner color="red" children="ss" />
+    </Story>
+</Canvas>
