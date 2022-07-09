@@ -1,0 +1,82 @@
+import { Meta, ColorPalette, ColorItem, ArgsTable, Story, Canvas } from '@storybook/addon-docs';
+import Dropdown from '.';
+
+<Meta title="Components/Dropdown" component={Dropdown} />
+
+export const StorybookDropdown = (args) => <Dropdown {...args} />;
+
+# Dropdown
+
+Drowdown allows to show interactive content.
+
+## Usage
+
+```jsx
+//React
+import React from 'react';
+
+//Components
+import ListContent from 'components/Auth/Form/ListContent';
+
+import { Dropdown } from '@cred/neopop-web/lib/components';
+
+//Main Component
+function List() {
+    const [contentVisibility, setContentVisibility] = React.useState(false);
+
+    function onDropdownClickHandler() {
+        setContentVisibility(true);
+        // ...other actions
+    }
+
+    return (
+        <>
+            <Dropdown label="Data" onClick={onDropdownClickHandler} />
+            {contentVisibility && <ListContent />}
+        </>
+    );
+}
+```
+
+## Variants
+
+<Canvas>
+    <Story
+        name="Dropdown"
+        args={{
+            onClick: () => {},
+            label: 'Food',
+            colorMode: 'light',
+        }}
+    >
+        {StorybookDropdown.bind({})}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop      | description                    | type       |
+| --------- | ------------------------------ | ---------- |
+| label\*   | text displayed inside dropdown | `string`   |
+| onClick\* | onClick event handler          | `function` |
+
+</div>
+
+`colorMode` - `dark` by default. Displays dropdown depending on specified mode. Supports 2 mode
+configurations: `light` and `dark`. <br/>
+`colorConfig` allows you to specify color of dropdown parts. It is an object, which consists of
+3 fields:
+
+<div style={{overflowX: 'auto'}}>
+
+| field   | description                             | type     |
+| ------- | --------------------------------------- | -------- |
+| text    | color of text displayed inside dropdown | `string` |
+| border  | color of dropdown's border              | `string` |
+| chevron | color of dropdown's chevron             | `string` |
+
+</div>
+
+But you can use either `colorMode` or `colorConfig`. If you use both, then `colorConfig` will overwrite `colorMode`.
