@@ -1,7 +1,11 @@
 import { Meta, ColorPalette, ColorItem, ArgsTable, Story, Canvas } from '@storybook/addon-docs';
 import Dropdown from '.';
 
-<Meta title="Components/Dropdown" component={Dropdown} />
+<Meta
+    title="Components/Dropdown"
+    component={Dropdown}
+    argTypes={{ onClick: { action: 'clicked' } }}
+/>
 
 export const StorybookDropdown = (args) => <Dropdown {...args} />;
 
@@ -39,7 +43,6 @@ function List() {
     <Story
         name="Dropdown"
         args={{
-            onClick: () => {},
             label: 'Food',
             colorMode: 'light',
         }}
