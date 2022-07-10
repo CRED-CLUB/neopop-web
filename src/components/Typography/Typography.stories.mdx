@@ -369,6 +369,7 @@ export const System = () => {
                         >
                             {config.items.map((item, ind) => (
                                 <div
+                                    key={ind}
                                     className={
                                         item.fontType === FontType.SERIF_HEADING
                                             ? 'cirka'
