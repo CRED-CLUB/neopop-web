@@ -49,9 +49,9 @@ const ScoreMeter = (props: ScoremeterProps) => {
     }, []);
 
     React.useEffect(() => {
-        let timerId;
+        let timerId: number;
         if (score !== sanitizedReading) {
-            timerId = setTimeout(() => {
+            timerId = window.setTimeout(() => {
                 setScoreUpdate(true);
             }, 500);
         }
@@ -61,9 +61,9 @@ const ScoreMeter = (props: ScoremeterProps) => {
     }, [animate]);
 
     React.useEffect(() => {
-        let timerId;
+        let timerId: number;
         if (Math.floor(sanitizedReading) !== Math.floor(score)) {
-            timerId = setTimeout(() => {
+            timerId = window.setTimeout(() => {
                 setScore((prevScore) => prevScore + differential);
                 setScoreUpdate((prev) => !prev);
             }, 20);
