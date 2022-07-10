@@ -49,28 +49,22 @@ const ScoreMeter = (props: ScoremeterProps) => {
     }, []);
 
     React.useEffect(() => {
-        let timerId: number;
         if (score !== sanitizedReading) {
-            timerId = window.setTimeout(() => {
+            const timerId = setTimeout(() => {
                 setScoreUpdate(true);
             }, 500);
+            return () => clearTimeout(timerId);
         }
-        return () => {
-            clearTimeout(timerId);
-        };
     }, [animate]);
 
     React.useEffect(() => {
-        let timerId: number;
         if (Math.floor(sanitizedReading) !== Math.floor(score)) {
-            timerId = window.setTimeout(() => {
+            const timerId = setTimeout(() => {
                 setScore((prevScore) => prevScore + differential);
                 setScoreUpdate((prev) => !prev);
             }, 20);
+            return () => clearTimeout(timerId);
         }
-        return () => {
-            clearTimeout(timerId);
-        };
     }, [scoreUpdate]);
 
     const scoreReading = getScoremeterReading(score, lowerLimit, upperLimit);
