@@ -348,7 +348,7 @@ export const System = () => {
             <GlobalFonts />
             <PageContainer>
                 {CONFIGS.map((config, index) => (
-                    <div style={{ minWidth: '33%' }} key={`typography-${index * 1}`}>
+                    <div style={{ minWidth: '33%' }} key={`typography-${index}`}>
                         <div className="cirka">
                             <Typography
                                 {...FontVariant.HeadingBold22}
@@ -367,9 +367,9 @@ export const System = () => {
                                 gridColumnGap: '10px',
                             }}
                         >
-                            {config.items.map((item, ind) => (
+                            {config.items.map((item, itemIndex) => (
                                 <div
-                                    key={ind}
+                                    key={`typography-config-${itemIndex}`}
                                     className={
                                         item.fontType === FontType.SERIF_HEADING
                                             ? 'cirka'
