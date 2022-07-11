@@ -33,35 +33,47 @@ export const LightScoreMeterTemplate = (args) => (
 
 export const ScoreMeterArgs = {
     reading: {
-        description: 'Current value of meter',
+        type: { name: 'number', required: true },
     },
-    meterConfig: {
-        description:
-            'All configs related to meter. meterColor: bar fill color, meterWrapper: outside meter wrapper bg, border: meter border, dotColor: dot color',
-    },
-    scoreConfig: {
-        description:
-            'All configs related to score. scoreDesc: description inside meter, scoreWrapper: space between bar with meterColor and scoreContainer, scoreContainer: score container background, scoreColor: score text color, showIndicators: indicators for score inc/dec.',
+    colorConfig: {
+        type: { name: 'object', required: false },
     },
     oldReading: {
-        description: 'Old reading (pass when score change animation required)',
+        defaultValue: null,
+        type: { name: 'number', required: false },
         control: {
             type: 'number',
         },
     },
     lowerLimit: {
-        description: 'Minimum possible reading of meter',
+        type: { name: 'number', required: false },
         defaultValue: 300,
         control: {
             type: 'number',
         },
     },
     upperLimit: {
-        description: 'Maximum possible reading of meter',
+        type: { name: 'number', required: false },
         defaultValue: 900,
         control: {
             type: 'number',
         },
+    },
+    type: {
+        options: ['excellent', 'average', 'poor'],
+        control: { type: 'radio', required: false },
+    },
+    colorMode: {
+        options: ['dark', 'light'],
+        control: { type: 'radio', required: false },
+    },
+    showIndicators: {
+        defaultValue: false,
+        control: { type: 'boolean', required: false },
+    },
+    showLegends: {
+        defaultValue: true,
+        control: { type: 'boolean', required: false },
     },
 };
 
@@ -123,7 +135,6 @@ export default ScoreMeterExample;
 
 <div style={{overflowX: 'auto'}}>
 
-
 | name             | description                                                                                                                          | type    |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------- |
 | `reading*`       | Current value of meter                                                                                                               | number  |
@@ -137,13 +148,11 @@ export default ScoreMeterExample;
 | `colorConfig`    | All configs related to color of the scoremeter                                                                                       | object  |
 | `showLegends`    | Use to show lower limit and upper limit text                                                                                         | boolean |
 
-
 </div>
 
 **colorConfig**
 
 <div style={{overflowX: 'auto'}}>
-
 
 | name                       | description                                                                  | type   |
 | -------------------------- | ---------------------------------------------------------------------------- | ------ |
@@ -156,20 +165,17 @@ export default ScoreMeterExample;
 | `scoreContainerBorder`     | Color of the border of the container (gap between meter and score container) | string |
 | `scoreColor`               | Color of the score                                                           | string |
 
-
 </div>
 
 **meterStrokeColor**
 
 <div style={{overflowX: 'auto'}}>
 
-
 | name         | description                        | type   |
 | ------------ | ---------------------------------- | ------ |
 | `excellent*` | Color when the rating is excellent | string |
 | `average*`   | Color when the rating is average   | string |
-| `poor*`     | Color when the rating is poor      | string |
-
+| `poor*`      | Color when the rating is poor      | string |
 
 </div>
 
@@ -177,12 +183,10 @@ export default ScoreMeterExample;
 
 <div style={{overflowX: 'auto'}}>
 
-
 | name         | description                                                      | type   |
 | ------------ | ---------------------------------------------------------------- | ------ |
 | `neutral*`   | Color used when there is no change in `oldReading` and `reading` | string |
 | `increment*` | Color used when `oldReading < reading`                           | string |
 | `decrement*` | Color used when `oldReading > reading`                           | string |
-
 
 </div>
