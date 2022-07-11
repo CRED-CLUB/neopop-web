@@ -45,23 +45,23 @@ jobs:
       - name: Build Codebase
         run: npm run build
 
-  build_storybook:
-    name: Build Storybook
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+  # build_storybook:
+  #   name: Build Storybook
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Use Node.js 14
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
-          cache: 'npm'
+  #     - name: Use Node.js 14
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14.x
+  #         cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+  #     - name: Install dependencies
+  #       run: npm ci
 
-      - name: Build Storybook
-        run: npm run build:storybook
+  #     - name: Build Storybook
+  #       run: npm run build:storybook
 
   commits:
     name: Conventional Commits
