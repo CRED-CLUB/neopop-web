@@ -1,4 +1,4 @@
-name: PR checks
+name: Check
 
 on:
   push:
@@ -37,7 +37,6 @@ jobs:
         with:
           node-version: 14.x
           cache: 'npm'
-
 
       - name: Install dependencies
         run: npm ci
