@@ -104,7 +104,7 @@ import { mainColors } from '@cred/neopop-web/lib/primitives';
 
 const ToastDemo = () => {
     const showToastNotif = () => {
-        showToast('Sample toast message', { type: 'success', autoCloseTime: '5000' });
+        showToast('Sample toast message', { type: 'success', autoCloseTime: 5000 });
     };
 
     return <button onClick={() => showToastNotif()}>Click for toast</button>;
