@@ -19,18 +19,23 @@ const ScoreMeter = (props: ScoremeterProps) => {
         colorConfig = colorGuide[colorMode == 'light' ? 'lightComponents' : 'darkComponents']
             .scoremeter,
         scoreDesc,
-        showIndicators,
+        showIndicators = false,
         lowerLimit = 300,
         upperLimit = 900,
         showLegends = true,
     } = props;
 
-    const sanitizedReading = reading < 0 ? LOWER_THRESHOLD : reading;
     const sanitizedOldReading = oldReading
-        ? oldReading < 0
-            ? LOWER_THRESHOLD
+        ? oldReading < lowerLimit
+            ? lowerLimit
+            : oldReading > upperLimit
+            ? upperLimit
             : oldReading
         : LOWER_THRESHOLD;
+
+    const sanitizedReading =
+        reading > upperLimit || reading < lowerLimit ? sanitizedOldReading : reading;
+
     const [score, setScore] = React.useState(sanitizedReading);
     const [oldScore] = React.useState(sanitizedOldReading);
     const [animate, setAnimate] = React.useState(false);

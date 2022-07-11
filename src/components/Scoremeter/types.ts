@@ -32,7 +32,7 @@ export interface ScoremeterProps {
     colorConfig?: ScoremeterColorConfig;
     scoreDesc?: string;
     showIndicators?: boolean;
-    oldReading: number;
+    oldReading?: number;
     lowerLimit?: number;
     upperLimit?: number;
     showLegends?: boolean;
