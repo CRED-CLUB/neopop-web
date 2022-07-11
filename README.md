@@ -20,7 +20,7 @@
 
 ## what is NeoPOP?
 
-NeoPOP was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. neopop stays true to everything that design at CRED stands for.
+NeoPOP was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. NeoPOP stays true to everything that design at CRED stands for.
 
 ## what this library features?
 
