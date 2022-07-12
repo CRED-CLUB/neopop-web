@@ -25,13 +25,11 @@ const ScoreMeter = (props: ScoremeterProps) => {
         showLegends = true,
     } = props;
 
-    const sanitizedOldReading = oldReading
-        ? oldReading < lowerLimit
-            ? lowerLimit
-            : oldReading > upperLimit
-            ? upperLimit
-            : oldReading
-        : LOWER_THRESHOLD;
+    let sanitizedOldReading = LOWER_THRESHOLD;
+    if (oldReading) {
+        sanitizedOldReading = oldReading > upperLimit ? upperLimit : oldReading;
+        sanitizedOldReading = sanitizedOldReading < lowerLimit ? lowerLimit : sanitizedOldReading;
+    }
 
     const sanitizedReading =
         reading > upperLimit || reading < lowerLimit ? sanitizedOldReading : reading;
