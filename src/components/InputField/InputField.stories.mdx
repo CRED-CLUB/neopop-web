@@ -96,7 +96,7 @@ export default InputFieldExample;
 | name           | specifies the name                                                                       | `string`                                                                    |
 | isDisabled     | disable state                                                                            | `bool`                                                                      |
 | placeholder    | defines placeholder for the field                                                        | `string`                                                                    |
-| scrollIntoView | -                                                                                        | `bool`                                                                      |
+| scrollIntoView | scrolls an element into the viewport                                                     | `bool`                                                                      |
 | id             | the unique identifier for this field                                                     | `string`                                                                    |
 | label          | specifies caption for the element                                                        | `string`                                                                    |
 | type           | specifies the type of the input field                                                    | `text` , `tel` , `number`                                                   |
@@ -106,7 +106,7 @@ export default InputFieldExample;
 | tabIndex       | indicates the element can be focused, and participates in sequential keyboard navigation | `number`                                                                    |
 | autoComplete   | specifies whether an element should have autocomplete enabled                            | `string`                                                                    |
 | onBlur         | event when an element loses focus                                                        | `func`                                                                      |
-| onFocus        | event when the user sets focus on an element                                             | `number`                                                                    |
+| onFocus        | event when the user sets focus on an element                                             | `func`                                                                      |
 | style          | for inline styles                                                                        | `React.CSSProperties`                                                       |
 | autoFocus      | specifies that an element should automatically get focus when the page loads             | `bool`                                                                      |
 | hasError       | specifies error state                                                                    | `bool`                                                                      |
@@ -148,10 +148,10 @@ export default InputFieldExample;
 
 <div style={{overflowX: 'auto'}}>
 
-| prop            | description        | type                                       |
-| --------------- | ------------------ | ------------------------------------------ |
-| `fontType*`     | typography variant | `heading`, `caps`, `body`, `serif-heading` |
-| `fontWeight*`   | weight of the text | `800`, `700`, `600`, `500`, `400`, `300`   |
-| `fontSize*`     | size of the text   | `string`                                   |
+| prop          | description        | type                                       |
+| ------------- | ------------------ | ------------------------------------------ |
+| `fontType*`   | typography variant | `heading`, `caps`, `body`, `serif-heading` |
+| `fontWeight*` | weight of the text | `800`, `700`, `600`, `500`, `400`, `300`   |
+| `fontSize*`   | size of the text   | `string`                                   |
 
 </div>
