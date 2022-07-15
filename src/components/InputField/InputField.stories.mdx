@@ -94,23 +94,23 @@ export default InputFieldExample;
 | prop           | description                                                                              | type                                                                        |
 | -------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | name           | specifies the name                                                                       | `string`                                                                    |
-| isDisabled     | disable state                                                                            | `bool`                                                                      |
+| isDisabled     | disable state                                                                            | `boolean`                                                                   |
 | placeholder    | defines placeholder for the field                                                        | `string`                                                                    |
-| scrollIntoView | -                                                                                        | `bool`                                                                      |
+| scrollIntoView | scrolls an element into the viewport                                                     | `boolean` \| `object`                                                       |
 | id             | the unique identifier for this field                                                     | `string`                                                                    |
 | label          | specifies caption for the element                                                        | `string`                                                                    |
 | type           | specifies the type of the input field                                                    | `text` , `tel` , `number`                                                   |
-| onChange       | event when the user commits a value change to a form control                             | `func`                                                                      |
+| onChange       | event when the user commits a value change to a form control                             | `function`                                                                  |
 | maxLength      | specifies the maximum value                                                              | `number`                                                                    |
 | value          | specifies the value of an element                                                        | `any`                                                                       |
 | tabIndex       | indicates the element can be focused, and participates in sequential keyboard navigation | `number`                                                                    |
 | autoComplete   | specifies whether an element should have autocomplete enabled                            | `string`                                                                    |
-| onBlur         | event when an element loses focus                                                        | `func`                                                                      |
-| onFocus        | event when the user sets focus on an element                                             | `number`                                                                    |
+| onBlur         | event when an element loses focus                                                        | `function`                                                                  |
+| onFocus        | event when the user sets focus on an element                                             | `function`                                                                  |
 | style          | for inline styles                                                                        | `React.CSSProperties`                                                       |
-| autoFocus      | specifies that an element should automatically get focus when the page loads             | `bool`                                                                      |
-| hasError       | specifies error state                                                                    | `bool`                                                                      |
-| inputRef       | ref attribute for input field                                                            | React.MutableRefObject<HTMLInputElement &vert; null>                        |
+| autoFocus      | specifies that an element should automatically get focus when the page loads             | `boolean`                                                                   |
+| hasError       | specifies error state                                                                    | `boolean`                                                                   |
+| inputRef       | ref attribute for input field                                                            | React.MutableRefObject<HTMLInputElement \| null>                            |
 | errorMessage   | defines error message                                                                    | `string`                                                                    |
 | colorConfig    | can be used for passing additional color configurations                                  | `object`                                                                    |
 | colorMode      | dark or light                                                                            | `string`                                                                    |
@@ -148,10 +148,10 @@ export default InputFieldExample;
 
 <div style={{overflowX: 'auto'}}>
 
-| prop            | description        | type                                       |
-| --------------- | ------------------ | ------------------------------------------ |
-| `fontType*`     | typography variant | `heading`, `caps`, `body`, `serif-heading` |
-| `fontWeight*`   | weight of the text | `800`, `700`, `600`, `500`, `400`, `300`   |
-| `fontSize*`     | size of the text   | `string`                                   |
+| prop          | description        | type                                       |
+| ------------- | ------------------ | ------------------------------------------ |
+| `fontType*`   | typography variant | `heading`, `caps`, `body`, `serif-heading` |
+| `fontWeight*` | weight of the text | `800`, `700`, `600`, `500`, `400`, `300`   |
+| `fontSize*`   | size of the text   | `string`                                   |
 
 </div>
