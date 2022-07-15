@@ -147,7 +147,7 @@ There can be 2 different variants of `flat` and `elevated` kind buttton
 | `elevationDirection` | specifies the direction for an `elevated` button. this will decide which plunk to hide or show when button is pressed. <br/> `"bottom-right"` `"top-right"` `"bottom-left"` `"top-left"` `"bottom-center"` `"top-center"` `"right-center"` `"left-center"` | `string`         |
 | `fullWidth`          | flex the button to take full-width of the container                                                                                                                                                                                                        | `boolean`        |
 | `showArrow`          | arrow icon in the button                                                                                                                                                                                                                                   | `boolean`        |
-| `disabled`           | if true, button is disabled                                                                                                                                                                                                                                | `object`         |
+| `disabled`           | if true, button is disabled                                                                                                                                                                                                                                | `boolean`         |
 | `colorConfig`        | object for taking in colors                                                                                                                                                                                                                                | `object`         |
 | `spacingConfig`      | object for taking in spacing details                                                                                                                                                                                                                       | `object`         |
 | `textStyle`          | text style - passes configs for `Typography` <br/> `{ fontWeight: FontWeights, fontSize: number, fontType: FontType }`                                                                                                                                     | `object`         |
@@ -166,7 +166,7 @@ It also takes `disabledColors` which takes in the same props but applied when `d
 | `backgroundColor` | background color for the face                                                                                    | `string` |
 | `edgeColors`      | colors for the plunk (left, right, top, bottom) <br/> `{ left: color, top: color, right: color, bottom: color }` | `object` |
 | `color`           | text color                                                                                                       | `string` |
-| `disabledColors`  | object of `borderColor`, `backgroundColor`, `edgeColors`, and `color` to be applied when `disabled` is true.     | `string` |
+| `disabledColors`  | object of `borderColor`, `backgroundColor`, `edgeColors`, and `color` to be applied when `disabled` is true.     | `object` |
 
 </div>
 

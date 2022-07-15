@@ -6,7 +6,7 @@ import useDelayMount from '@hooks/useDelayMount';
 import useClientHeight from '@hooks/useClientHeight';
 import { UseBottomSheetMechanicsArgs, Prop } from '../types';
 
-import { Wraper, Overlay, Sheet, GapFiller, Content, Card, Notch, CardCustom } from '../styles';
+import { Wrapper, Overlay, Sheet, GapFiller, Content, Card, Notch, CardCustom } from '../styles';
 
 const twoThirdOf = (number: number) => (number * 2) / 3;
 
@@ -176,7 +176,7 @@ const BottomSheetControlled = ({
 
     return (
         <Portal node={node || document.body}>
-            <Wraper {...props}>
+            <Wrapper {...props}>
                 <Overlay
                     onKeyDown={(event) => {
                         if (event.key === 'Escape' && !blocking) {
@@ -199,7 +199,7 @@ const BottomSheetControlled = ({
                     </Sheet>
                 </Card>
                 <GapFiller style={{ scaleY, opacity }} />
-            </Wraper>
+            </Wrapper>
         </Portal>
     );
 };
@@ -230,7 +230,7 @@ export const BottomSheetControlledCustom = ({
 
     return (
         <Portal node={node || document.body}>
-            <Wraper {...props}>
+            <Wrapper {...props}>
                 {shouldShowOverlay ? (
                     <Overlay
                         onKeyDown={(event) => {
@@ -250,7 +250,7 @@ export const BottomSheetControlledCustom = ({
                         {children}
                     </Sheet>
                 </CardCustom>
-            </Wraper>
+            </Wrapper>
         </Portal>
     );
 };
