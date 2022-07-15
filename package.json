@@ -9,7 +9,8 @@
         "build": "./scripts/build",
         "storybook": "start-storybook -p 6006 -s ./.storybook/images",
         "build:storybook": "build-storybook -s ./.storybook/images",
-        "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet --fix",
+        "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+        "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet --fix",
         "prepare": "husky install",
         "pretty": "prettier --write src/**/*.{ts,tsx}"
     },
