@@ -49,7 +49,7 @@ addParameters({
             order: [
                 'Introduction',
                 'Foundation',
-                ['Colors', 'Typography', 'Layout', 'Miscellaneous', 'Customisation'],
+                ['Colors', 'Typography', 'Layout', 'Miscellaneous', 'Customization'],
                 'Components',
             ],
         },
