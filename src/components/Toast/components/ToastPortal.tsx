@@ -5,7 +5,7 @@ import { typographyGuide } from '../../../primitives';
 import Typography from '../../Typography';
 import { Icon, ToastItem } from '../styles';
 import { ToastIconProps, ToastProps } from '../types';
-import { hexToRGBA } from '../../../utils';
+import { hexToRGBA, isEmpty } from '../../../utils';
 import { getToastColor } from '@primitives/toasts';
 
 const generateId = () => Math.random().toString(36).substring(2, 10);
@@ -39,7 +39,9 @@ export const Toast = (props: ToastProps) => {
             background={colorConfig.background}
             autoCloseTime={autoCloseTime}
             fullWidth={fullWidth}
-            onClick={() => (dismissOnClick && removeToast && id ? removeToast(id) : null)}
+            onClick={() => {
+                if (dismissOnClick && id) removeToast?.(id);
+            }}
         >
             <Column>
                 <Typography {...textStyle.heading} color={colorConfig.color}>
@@ -64,7 +66,6 @@ export const Toast = (props: ToastProps) => {
 
 export const ToastPortal = forwardRef((props, ref) => {
     const [toastList, setToastList] = useState<ToastProps[]>([]);
-    const [removeId, setRemoveId] = useState<string | undefined>('');
 
     useImperativeHandle(ref, () => ({
         addToast(options: ToastProps) {
@@ -79,22 +80,16 @@ export const ToastPortal = forwardRef((props, ref) => {
     };
 
     useEffect(() => {
-        if (removeId) {
-            removeToast(removeId);
-        }
-    }, [removeId]);
-
-    useEffect(() => {
         if (toastList.length) {
             const { id, autoCloseTime } = toastList[toastList.length - 1];
-            setTimeout(() => {
-                setRemoveId(id);
+            const timerId = setTimeout(() => {
+                removeToast(id);
             }, autoCloseTime || 3000);
+            return () => clearTimeout(timerId);
         }
     }, [toastList]);
 
-    if (!toastList) return null;
-    if (toastList && !toastList.length) return null;
+    if (isEmpty(toastList)) return null;
 
     return (
         <Portal>
