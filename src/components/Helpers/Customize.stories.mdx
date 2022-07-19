@@ -4,7 +4,7 @@ import { mainColors, colorPalette } from '@primitives';
 import { hexToRGBA } from '@utils';
 import { FontWeights, FontType } from '@types';
 
-<Meta title="Foundation/Customisation" />
+<Meta title="Foundation/Customization" />
 
 export const colorConfig = {
     backgroundColor: mainColors.black,
@@ -22,7 +22,7 @@ export const colorConfig = {
         },
     },
 };
-export const CustomiseButton = (args) => {
+export const CustomizeButton = (args) => {
     return (
         <Button
             size="big"
@@ -37,11 +37,11 @@ export const CustomiseButton = (args) => {
     );
 };
 
-# How to Customise
+# How to Customize
 
 All neoPOP components use default neoPOP styles based on props passed to the components.
 The styles like color and typography is decided based on the `colors` and `typography` mentioned in Foundation respectively.
-To customise the component even further with your own theme, we provide 2 ways
+To customize the component even further with your own theme, we provide 2 ways
 
 1. Extend color primitives
 2. Custom props
@@ -127,7 +127,7 @@ export default MyCustomButton;
 ```
 
 <Canvas style={{ background: '#0d0d0d' }}>
-    <Story name="Custom ColorConfig Button">{CustomiseButton.bind()}</Story>
+    <Story name="Custom ColorConfig Button">{CustomizeButton.bind()}</Story>
 </Canvas>
 
 ## Passing `textStyle` to the component
@@ -174,7 +174,7 @@ const MyCustomButton = () => {
             },
         }}
     >
-        {CustomiseButton.bind()}
+        {CustomizeButton.bind()}
     </Story>
 </Canvas>
 
