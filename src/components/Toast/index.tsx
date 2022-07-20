@@ -13,6 +13,10 @@ class GlobalStore {
         this.func.push(listener);
     }
 
+    off(listener: Function) {
+        this.func = this.func.filter((fn) => fn !== listener);
+    }
+
     emit(options: OptionProps) {
         this.func.forEach((l) => l(options));
     }
@@ -32,6 +36,7 @@ export const ToastContainer = () => {
             toastRef.current?.addToast(options);
         };
         globalStore.on(listener);
+        return () => globalStore.off(listener);
     }, []);
 
     return <ToastPortal ref={toastRef} />;
