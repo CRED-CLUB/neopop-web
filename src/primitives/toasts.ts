@@ -9,6 +9,8 @@ export const getToastColor = (type: ToastTypes) => {
             return colorGuide.darkComponents.toast.error;
         case 'warning':
             return colorGuide.darkComponents.toast.warning;
+        case 'info':
+            return colorGuide.darkComponents.toast.info;
         default:
             return colorGuide.darkComponents.toast.error;
     }
