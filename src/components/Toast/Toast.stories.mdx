@@ -29,7 +29,7 @@ export const toastArgTypes = {
         },
     },
     type: {
-        description: 'Type of toast - `success` | `error` | `warning`',
+        description: 'Type of toast - `success` | `error` | `warning` | `info`',
     },
     id: {
         table: {
@@ -73,7 +73,7 @@ Toasts is used as a non blocking notification with short message for users to ge
 
 1. Add `ToastContainer` anywhere in the DOM tree.
 2. Call `showToast` method with message as first argument and object with toast configuration props as second argument.
-3. You can pass the `type` as `success` | `error` | `warning` or can pass custom `colorConfig` to change the color of the toast.
+3. You can pass the `type` as `success` | `error` | `warning` | `info` or can pass custom `colorConfig` to change the color of the toast.
 
 <br />
 
@@ -155,6 +155,20 @@ export default ToastDemo;
     </Story>
 </Canvas>
 
+### Info Toast
+
+<Canvas>
+    <Story
+        name="Info Toast"
+        args={{
+            content: 'Your request is missing data.',
+            type: 'info',
+        }}
+    >
+        {ToastTemplate.bind({})}
+    </Story>
+</Canvas>
+
 ## Props
 
 `showToast(content: string, options: object)` function takes two arguments
@@ -175,7 +189,7 @@ export default ToastDemo;
 | prop             | description                                                                  | type      |
 | ---------------- | ---------------------------------------------------------------------------- | --------- |
 | `description`    | toast subtext                                                                | `string`  |
-| `type`           | `success`, `warning`, or `error` - this also decides the color               | `string`  |
+| `type`           | `success`, `warning`, `error` or `info` - this also decides the color        | `string`  |
 | `colorConfig`    | `{ background: string, color: string }`                                      | `object`  |
 | `textStyle`      | used for passing the font styles for toast content (message) and description | `object`  |
 | `fullWidth`      | toast width with default true                                                | `boolean` |

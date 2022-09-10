@@ -21,7 +21,7 @@ type ToastColorConfig = {
     color: string;
 };
 
-export type ToastTypes = 'success' | 'error' | 'warning';
+export type ToastTypes = 'success' | 'error' | 'warning' | 'info';
 export interface ToastProps {
     id?: string;
     content: string;

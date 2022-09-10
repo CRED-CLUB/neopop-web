@@ -161,6 +161,10 @@ const getDarkThemedColors = () => ({
             background: mainColors.red,
             color: '#F8F8F8',
         },
+        info: {
+            background: mainColors.blue,
+            color: '#F8F8F8',
+        },
     },
     searchBar: {
         border: colorPalette.black[70],
