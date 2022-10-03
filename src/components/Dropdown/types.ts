@@ -7,7 +7,7 @@ export interface DropdownConfig {
 export type DropdownColorModes = 'dark' | 'light';
 export interface DropdownProps {
     onClick: () => void;
-    label: string;
+    label?: string;
     colorConfig?: DropdownConfig;
     colorMode?: DropdownColorModes;
 }
