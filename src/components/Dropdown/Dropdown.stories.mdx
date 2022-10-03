@@ -1,0 +1,93 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import Dropdown from '.';
+import { colorGuide } from '@primitives';
+
+<Meta
+    title="Components/Dropdown"
+    component={Dropdown}
+    argTypes={{
+        colorConfig: {
+            border: {
+                control: { type: 'color' },
+            },
+            text: {
+                control: { type: 'color' },
+            },
+            chevron: {
+                control: { type: 'color' },
+            },
+        },
+    }}
+/>
+
+# Dropdown
+
+Dropdown component is used when the users wants to select one or more items from a set of options.
+
+## Usage
+
+#### 1. Dropdown with label
+
+export const DropdownWithLabel = (args) => {
+    return (
+        <Dropdown {...args} />
+    );
+};
+
+<Canvas>
+    <Story
+        name="Dropdown with label"
+        args={{
+            colorConfig: colorGuide.lightComponents.dropdown.withLabel,
+            label: 'Test'
+        }}
+    >
+        {DropdownWithLabel.bind()}
+    </Story>
+</Canvas>
+
+#### 2. Dropdown without label
+
+export const DropdownWithoutLabel = (args) => {
+    return (
+        <Dropdown {...args} />
+    );
+};
+
+<Canvas>
+    <Story
+        name="Dropdown without label"
+        args={{
+            colorConfig: colorGuide.lightComponents.dropdown.withoutLabel,
+        }}
+    >
+        {DropdownWithoutLabel.bind()}
+    </Story>
+</Canvas>
+
+## Props
+
+<div style={{overflowX: 'auto'}}>
+
+| prop           | description                       | type       |
+| -------------- | --------------------------------- | ---------- |
+| `label`        | label of dropdown                 | `string`   |
+| `colorConfig`  | dropdown color config             | `object`   |
+| `colorMode`    | dark or light                     | `string`   |
+| `onClick`      | onClick event handler             | `function` |
+
+</div>
+
+**colorConfig**
+
+colorConfig prop object support four color configurations namely: `border`, `text`, & `chevron`.
+
+<div style={{overflowX: 'auto'}}>
+
+| property        | description               | type     |
+| --------------- | ------------------------- | -------- |
+| `border`        | border color              | `string` |
+| `text`          | text color                | `string` |
+| `chevron`       | chevron color             | `string` |
+
+</div>
