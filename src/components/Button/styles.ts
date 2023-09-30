@@ -56,6 +56,9 @@ export const ButtonWrapper = styled.button<StyledButtonType>`
             : `
 
     `}
+    &:focus {
+        outline: solid 1px white;
+    }
     .button-face {
         position: relative;
         display: flex;
