@@ -57,7 +57,7 @@ export const ButtonWrapper = styled.button<StyledButtonType>`
 
     `}
     &:focus {
-        outline: solid 1px white;
+        outline: auto;
     }
     .button-face {
         position: relative;
