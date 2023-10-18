@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import withCheckHOC from '@components/Helpers/withCheckHOC';
 import { CheckmarkWrapper, CheckboxLabel } from './styles';
 import { CheckboxProps } from './types';
@@ -8,6 +8,7 @@ import { isEmpty } from '@utils';
 
 const Checkbox = (props: CheckboxProps) => {
     const { isChecked, handleChange, colorConfig, colorMode, children, ...propsToFwd } = props;
+    const checkboxRef = useRef<HTMLInputElement>(null);
     const defaultColorConfig =
         colorGuide[colorMode === 'light' ? 'lightComponents' : 'darkComponents'].checkbox;
     const checkboxColorConfig = isEmpty(colorConfig)
@@ -16,12 +17,32 @@ const Checkbox = (props: CheckboxProps) => {
 
     return (
         <CheckboxLabel>
-            <input {...propsToFwd} type="checkbox" checked={isChecked} onChange={handleChange} />
+            <input
+                tabIndex={-1}
+                {...propsToFwd}
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleChange}
+                ref={checkboxRef}
+            />
             <Row>
                 <CheckmarkWrapper
                     colorConfig={checkboxColorConfig}
                     hasChildren={children ? true : false}
                     checked={isChecked}
+                    tabIndex={0}
+                    onClick={(clickEvent) => {
+                        clickEvent.preventDefault();
+                        checkboxRef.current?.click();
+                    }}
+                    role="checkbox"
+                    aria-checked={isChecked}
+                    onKeyDown={(keydownEvent) => {
+                        let key = keydownEvent.code;
+                        if (key === 'Space' || key === 'Enter') {
+                            checkboxRef.current?.click();
+                        }
+                    }}
                 >
                     <span className="checkmark">
                         <svg
