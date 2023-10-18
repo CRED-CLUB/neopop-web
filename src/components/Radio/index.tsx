@@ -20,7 +20,6 @@ const Radio = (props: RadioProps) => {
             }}
             onKeyDown={(clickEvent) => {
                 const key = clickEvent.code;
-                console.log(key);
                 if (key === 'Enter' || key === 'Space') radioRef?.current?.click();
             }}
             colorConfig={
